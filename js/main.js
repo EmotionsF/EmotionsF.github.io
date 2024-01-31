@@ -2,6 +2,7 @@ const app = Vue.createApp({
     mixins: Object.values(mixins),
     data() {
         return {
+            theme: localStorage.getItem("theme") || "auto",
             loading: true,
             hiddenMenu: false,
             showMenuItems: false,
@@ -11,15 +12,60 @@ const app = Vue.createApp({
         };
     },
     created() {
+        if (this.theme === 'auto')
+            this.isSystemDarkMode() ? this.setDarkMode(true) : this.setDarkMode(false);
+        else
+            this.theme === "dark" ? this.setDarkMode(true) : this.setDarkMode(false);
+        window.addEventListener("beforeunload", () => {
+            if (this.theme === "auto")
+                localStorage.removeItem("theme");
+            else
+                localStorage.setItem("theme", this.theme)
+        });
         window.addEventListener("load", () => {
             this.loading = false;
         });
+
     },
     mounted() {
         window.addEventListener("scroll", this.handleScroll, true);
         this.render();
     },
     methods: {
+        // 判断系统是否为黑暗模式
+        isSystemDarkMode() {
+            return window.matchMedia("(prefers-color-scheme: dark)").matches;
+        },
+        /**
+         * @param {boolean} dark 
+         */
+        setDarkMode(dark) {
+            if (dark) {
+                document.documentElement.classList.add("dark");
+                document
+                .getElementById("highlight-style-dark")
+                .removeAttribute("disabled");
+            } else {
+                document.documentElement.classList.remove("dark");
+                document
+                .getElementById("highlight-style-dark")
+                .setAttribute("disabled", "");
+            }
+        },
+        handleThemeSwitch() {
+            this.theme = ((theme) => {
+                switch (theme) {
+                case "auto": // auto -> light
+                    this.setDarkMode(false);
+                    return "light";
+                case "light": // light -> dark
+                    this.setDarkMode(true)
+                    return "dark";
+                case "dark": // dark -> auto
+                    this.isSystemDarkMode() ? this.setDarkMode(true) : this.setDarkMode(false);
+                    return "auto";
+            }})(this.theme)
+        },
         render() {
             for (let i of this.renderers) i();
         },
@@ -37,6 +83,20 @@ const app = Vue.createApp({
                 else wrap.style.top = "-80px";
             }
             this.scrollTop = newScrollTop;
+        },
+        // main.js
+        setDarkMode(dark) {
+            if (dark) {
+                document.documentElement.classList.add("dark");
+                document
+                .getElementById("highlight-style-dark")
+                .removeAttribute("disabled");
+            } else {
+                document.documentElement.classList.remove("dark");
+                document
+                .getElementById("highlight-style-dark")
+                .setAttribute("disabled", "");
+            }
         },
     },
 });

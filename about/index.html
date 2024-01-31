@@ -1,13 +1,33 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <div id="cursor"></div>
+    <link rel="stylesheet" href="/css/cursor.min.css">
+    <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
     <title>About me | Welcome</title>
     <meta name="author" content="Katayo Kizuna" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 爆炸红心效果 -->
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/firework.js"></script>
     <link rel="icon" href="/images/avatar.jpg" />
     <link rel="preconnect" href="https://cdn.staticfile.org" />
 <script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
@@ -29,6 +49,21 @@
 <script src="/js/lib/highlight.js"></script>
 
 
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
 
 <script src="/js/lib/preview.js"></script>
 
@@ -37,14 +72,16 @@
 
 
 
+<script src="https://cdn.staticfile.org/waline/2.15.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
 
-<script src="https://cdn.staticfile.org/twikoo/1.6.22/twikoo.all.min.js"></script>
 
 
 
 <link rel="stylesheet" href="/css/main.css" />
 
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 6.3.0"></head>
 <body>
     <div id="layout">
         <transition name="fade">
@@ -77,7 +114,7 @@
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="/public">
+        <a href="/categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
@@ -123,7 +160,7 @@
                     </div>
                 </a>
                 
-                <a href="/public">
+                <a href="/categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -186,14 +223,15 @@
 </code></pre>
 <p><strong>嗨！</strong> 既然都已经来到我的世界了，就不要忘了最重要的东西哦 ♪ (●’◡’●)ﾉ</p>
 <ul>
-<li>📧 <a href="mailto:&#119;&#97;&#115;&#x68;&#x69;&#x6f;&#x62;&#x69;&#51;&#x31;&#48;&#x39;&#x40;&#102;&#x6f;&#120;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;">&#119;&#97;&#115;&#x68;&#x69;&#x6f;&#x62;&#x69;&#51;&#x31;&#48;&#x39;&#x40;&#102;&#x6f;&#120;&#109;&#97;&#105;&#x6c;&#46;&#99;&#111;&#x6d;</a></li>
+<li>📧 <a href="mailto:&#x77;&#x61;&#115;&#x68;&#x69;&#x6f;&#98;&#105;&#51;&#49;&#48;&#57;&#x40;&#x66;&#111;&#120;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;">&#x77;&#x61;&#115;&#x68;&#x69;&#x6f;&#98;&#105;&#51;&#49;&#48;&#57;&#x40;&#x66;&#111;&#120;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#x6f;&#x6d;</a></li>
 <li>🐧 <a target="_blank" rel="noopener" href="https://qm.qq.com/q/X5oFz7ory6">3364555156</a></li>
 <li>👾 <a target="_blank" rel="noopener" href="https://discord.gg/Gzk8XDbAW2">KatayoのNekobox</a>    (Discord Channel)</li>
 <li>✈ <a target="_blank" rel="noopener" href="https://t.me/Katayocyberangel">Telegram Link</a></li>
 </ul>
 <br>
 
-<p>我真的希望人们可以做一颗夜空中的星，<br>虽然它光芒暗淡，但是，它就是我们心目中的那个<strong>银河</strong><br><br></p>
+<p>我真的希望人们可以做一颗夜空中的星，<br><em>虽然它光芒暗淡，但是，它就是我们心目中的那个银河</em><br><br></p>
+<p><img src="/images/host.jpg" alt="host"></p>
 <p><font color=#871A99>未完待续</font></p>
 
     </div>
@@ -201,11 +239,15 @@
     
     
     
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
     
     
     <div id="comment">
-        <div id="twikoo-container"></div>
+        <div id="waline-container"></div>
     </div>
+    
     
     
 </div>
@@ -214,7 +256,7 @@
     <div id="footer-wrap">
         <div>
             &copy;
-            2022 - 2024 Welcome
+            2023 - 2024 Welcome
             <span id="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -240,18 +282,43 @@
     <script src="/js/main.js"></script>
     
     
+<script
+    src="https://giscus.app/client.js"
+    data-repo=""
+    data-repo-id=""
+    data-category=""
+    data-category-id=""
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang=""
+    crossorigin
+    async
+></script>
 
 
 
 <script>
-    twikoo.init({
-        el: "#twikoo-container",
-        envId: "",
-        region: "",
-        path: location.pathname,
-        lang: "",
-    })
+    Waline.init({
+        dark: "html.dark",
+        el: "#waline-container",
+        serverURL: "blog-comments-indol-eight.vercel.app",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
+        lang: "zh-CN,en-US,jp-JP",
+        wordLimit: 0,
+        pageSize: "10",
+        login: "enable",
+        
+    });
 </script>
+
 
 
     
