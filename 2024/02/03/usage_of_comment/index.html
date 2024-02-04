@@ -72,6 +72,10 @@
 
 
 
+<script src="https://cdn.staticfile.org/waline/2.15.8/waline.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
+
 
 
 
@@ -213,7 +217,7 @@
             
             <span class="tag">
                 
-                <a href="../../../../tags/school/" style="color: #03a9f4">使用教程</a>
+                <a href="../../../../tags/school/" style="color: #ff7d73">使用教程</a>
             </span>
             
         </span>
@@ -315,10 +319,10 @@ public class HelloWorld &#123;
     
     
     
-    <div id="comment">
-        <div id="giscus-container" class="giscus"></div>
-    </div>
     
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
     
     
     
@@ -354,24 +358,25 @@ public class HelloWorld &#123;
     <script src="../../../../js/main.js"></script>
     
     
-<script
-    src="https://giscus.app/client.js"
-    data-repo="EmotionsF/EmotionsF.github.io"
-    data-repo-id="R_kgDOLLB3Pw"
-    data-category="General"
-    data-category-id="DIC_kwDOLLB3P84Cc7x_"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="preferred_color_scheme"
-    data-lang="zh-CN"
-    crossorigin
-    async
-></script>
 
 
+<script>
+    Waline.init({
+        dark: "html.dark",
+        el: "#waline-container",
+        serverURL: "blog-comments-indol-eight.vercel.app",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick".split(","),
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "16",
+        login: "enable",
+        
+    });
+</script>
 
 
 
