@@ -72,7 +72,7 @@
 
 
 
-<script src="https://cdn.staticfile.org/waline/2.15.8/waline.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
 <link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
 
@@ -222,7 +222,7 @@
             
             <span class="tag">
                 
-                <a href="../../../../tags/Hello-world/" style="color: #ffa2c4">Hello world</a>
+                <a href="../../../../tags/Hello-world/" style="color: #03a9f4">Hello world</a>
             </span>
             
         </span>
@@ -302,12 +302,12 @@
     Waline.init({
         dark: "html.dark",
         el: "#waline-container",
-        serverURL: "blog-comments-indol-eight.vercel.app",
+        serverURL: "https://blog-comments-indol-eight.vercel.app",
         commentCount: true,
         pageview: false,
         emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
         meta: "nick,mail,link".split(","),
-        requiredMeta: "nick".split(","),
+        requiredMeta: "nick,mail".split(","),
         lang: "zh-CN",
         wordLimit: 0,
         pageSize: "16",
