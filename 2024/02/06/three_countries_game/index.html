@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>Tags | Welcome</title>
+    <title>蓝桥杯-三国游戏 | Welcome</title>
     <meta name="author" content="Katayo Kizuna" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -28,7 +28,7 @@
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
     <script type="text/javascript" src="/js/firework.js"></script>
-    <link rel="icon" href="../images/avatar.jpg" />
+    <link rel="icon" href="../../../../images/avatar.jpg" />
     <link rel="preconnect" href="https://cdn.staticfile.org" />
 <script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
@@ -46,7 +46,7 @@
     rel="stylesheet"
     href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
 />
-<script src="../js/lib/highlight.js"></script>
+<script src="../../../../js/lib/highlight.js"></script>
 
 
 <script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
@@ -61,17 +61,25 @@
     disabled
     href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
 />
-<script src="../js/lib/highlight.js"></script>
+<script src="../../../../js/lib/highlight.js"></script>
 
 
 
-<script src="../js/lib/preview.js"></script>
+<script src="../../../../js/lib/preview.js"></script>
 
 
 
 
 
-<link rel="stylesheet" href="../css/main.css" />
+
+<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
@@ -81,7 +89,7 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>加载过慢请刷新(●´∀｀●) </p>
-                    <img src="../images/loading.gif" />
+                    <img src="../../../../images/loading.gif" />
                 </div>
             </div>
         </transition>
@@ -91,32 +99,32 @@
             <span>WELCOME</span>
         </a>
         
-        <a href="../index.html">
+        <a href="../../../../index.html">
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
         
-        <a href="../about">
+        <a href="../../../../about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About Me</span>
         </a>
         
-        <a href="../archives">
+        <a href="../../../../archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="../categories">
+        <a href="../../../../categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
         
-        <a href="../tags">
+        <a href="../../../../tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
         
-        <a href="../games">
+        <a href="../../../../games">
             <i class="fa-solid fa-gamepad fa-fw"></i>
             <span>&ensp;Games</span>
         </a>
@@ -130,7 +138,7 @@
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
                 
-                <a href="../index.html">
+                <a href="../../../../index.html">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
@@ -139,7 +147,7 @@
                     </div>
                 </a>
                 
-                <a href="../about">
+                <a href="../../../../about">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -148,7 +156,7 @@
                     </div>
                 </a>
                 
-                <a href="../archives">
+                <a href="../../../../archives">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
@@ -157,7 +165,7 @@
                     </div>
                 </a>
                 
-                <a href="../categories">
+                <a href="../../../../categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -166,7 +174,7 @@
                     </div>
                 </a>
                 
-                <a href="../tags">
+                <a href="../../../../tags">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-tags fa-fw"></i>
@@ -175,7 +183,7 @@
                     </div>
                 </a>
                 
-                <a href="../games">
+                <a href="../../../../games">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-gamepad fa-fw"></i>
@@ -193,89 +201,140 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
+            <div class="article">
+    <div>
+        <h1>蓝桥杯-三国游戏</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/6
+        </span>
         
-        
-        
-        <span>
-            <a href="Hello-world/" style="background: #00bcd4">
+        <span class="category">
+            <a href="../../../../categories/book/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Hello world
+                knowledge
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="c/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                C/C++
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #03a9f4">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/trophy/" style="color: #ff7d73">蓝桥杯</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator/" style="color: #00a596">算法题</a>
+            </span>
+            
         </span>
-        
-        
-        
-        <span>
-            <a href="trophy/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                蓝桥杯
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="calculator/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法题
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="calculator-simple/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法思路
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="flask/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                科普
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="school/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                使用教程
-            </a>
-        </span>
-        
         
     </div>
+    
+    <div class="content" v-pre>
+        <p>蓝桥杯2023年大学C组真题—三国游戏解法</p>
+<span id="more"></span>
+
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><h5 id="可千万别瞧不起人家大专生，这可是大专组的题目"><a href="#可千万别瞧不起人家大专生，这可是大专组的题目" class="headerlink" title="可千万别瞧不起人家大专生，这可是大专组的题目"></a><font color=#871A99>可千万别瞧不起人家大专生，这可是大专组的题目</font></h5><p>这个程序涉及到了<code>sort</code> 函数和 <code>max()</code> <code>min()</code> 函数的用法，这些函数统统包括在标准库文件<code>&lt;algorithm&gt;</code>中。<br>之前有几个同学给我看过几个c语言的代码，问题都是在不经过定义的情况下直接调用<code>max</code>函数或者<code>min</code>函数，导致程序报错。但在C++中，如果引用了上面的标准库文件或者是万能标准库文件<code>&lt;bits/stdc++.h&gt;</code>之后，你就可以直接使用max或者min函数来返回最大或者最小的函数了。<br><code>sort</code> 函数就是排序的函数，其中的形参中，第一个和第二个为指针，第三个则是排序规则，如果第三个形参保持空白，则默认以从小到大的方式排序。排序之后这两个指针之间的内存空间内数据会发生重新排列（也就是在原有的数据基础上进行操作）<br>例如，以下代码实现了对数组<code>a[100]</code>进行从小到大的排序：</p>
+<pre><code class="c++">#include&lt;bits/stdc++.h&gt;
+//上面这个包括了C和C++的所有库函数，比赛用这个肯定没错
+
+int main()&#123;
+    int a[100] = &#123;0&#125;;
+    for(int i=0;i&lt;100;i++)&#123;
+        cin &gt;&gt; a[i]; //输入函数
+    &#125;
+    sort(a,a+100);
+    for(int i=0;i&lt;100;i++)&#123;
+        cout &lt;&lt; a[i]; //输出函数
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h3><p>本题运用到了贪心算法，具体可以在网上搜索对应的解释（b站一大堆）</p>
+<pre><code class="c++">#include &lt;iostream&gt; 
+#include &lt;algorithm&gt;
+typedef long long ll;
+using namespace std;
+
+int main() &#123;
+    int n;
+    cin &gt;&gt; n;
+    int Awin[n] = &#123;0&#125;, Bwin[n] = &#123;0&#125;, Cwin[n] = &#123;0&#125;;
+    int A[n] = &#123;0&#125;, B[n] = &#123;0&#125;, C[n] = &#123;0&#125;;
+    for (int i = 0; i &lt; n; i++) &#123;
+        cin &gt;&gt; A[i];
+    &#125;
+    for (int i = 0; i &lt; n; i++) &#123;
+        cin &gt;&gt; B[i];
+    &#125;
+    for (int i = 0; i &lt; n; i++) &#123;
+        cin &gt;&gt; C[i];
+        Awin[i] = A[i] - B[i] - C[i];
+        Bwin[i] = B[i] - A[i] - C[i];
+        Cwin[i] = C[i] - A[i] - B[i];
+    &#125;
+    sort(Awin, Awin + n);
+    sort(Bwin, Bwin + n);
+    sort(Cwin, Cwin + n);
+    ll a = 0, b = 0, c = 0;
+    int X = 0, Y = 0, Z = 0;
+    for (int i = 0; i &lt; n; i++) &#123;
+        a += Awin[n - i - 1];
+        if (a &lt;= 0)
+            break;
+            X++;
+    &#125;
+    for (int i = 0; i &lt; n; i++) &#123;
+        b += Bwin[n - i - 1];
+        if (b &lt;= 0)
+            break;
+            Y++;
+    &#125;
+    for (int i = 0; i &lt; n; i++) &#123;
+        c += Cwin[n - i - 1];
+        if (c &lt;= 0)
+            break;
+            Z++;
+    &#125;
+    int infer = max(max(X,Y),Z);
+    if(infer&gt;0)&#123;
+        cout &lt;&lt; infer;
+    &#125;else&#123;
+        cout &lt;&lt; -1;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+    
     
 </div>
 
@@ -313,7 +372,31 @@
         </transition>
         
     </div>
-    <script src="../js/main.js"></script>
+    <script src="../../../../js/main.js"></script>
+    
+    
+
+
+<script>
+    Waline.init({
+        dark: "html.dark",
+        el: "#waline-container",
+        serverURL: "https://www.emotionsf.icu",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick,mail".split(","),
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "16",
+        login: "enable",
+        
+    });
+</script>
+
+
+
     
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
 </html>

@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>Tags | Welcome</title>
+    <title>蓝桥杯-幸运数解法 | Welcome</title>
     <meta name="author" content="Katayo Kizuna" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
@@ -28,7 +28,7 @@
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
     <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
     <script type="text/javascript" src="/js/firework.js"></script>
-    <link rel="icon" href="../images/avatar.jpg" />
+    <link rel="icon" href="../../../../images/avatar.jpg" />
     <link rel="preconnect" href="https://cdn.staticfile.org" />
 <script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
@@ -46,7 +46,7 @@
     rel="stylesheet"
     href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
 />
-<script src="../js/lib/highlight.js"></script>
+<script src="../../../../js/lib/highlight.js"></script>
 
 
 <script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
@@ -61,17 +61,25 @@
     disabled
     href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
 />
-<script src="../js/lib/highlight.js"></script>
+<script src="../../../../js/lib/highlight.js"></script>
 
 
 
-<script src="../js/lib/preview.js"></script>
+<script src="../../../../js/lib/preview.js"></script>
 
 
 
 
 
-<link rel="stylesheet" href="../css/main.css" />
+
+<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
@@ -81,7 +89,7 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>加载过慢请刷新(●´∀｀●) </p>
-                    <img src="../images/loading.gif" />
+                    <img src="../../../../images/loading.gif" />
                 </div>
             </div>
         </transition>
@@ -91,32 +99,32 @@
             <span>WELCOME</span>
         </a>
         
-        <a href="../index.html">
+        <a href="../../../../index.html">
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
         
-        <a href="../about">
+        <a href="../../../../about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About Me</span>
         </a>
         
-        <a href="../archives">
+        <a href="../../../../archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
         
-        <a href="../categories">
+        <a href="../../../../categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
         
-        <a href="../tags">
+        <a href="../../../../tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
         
-        <a href="../games">
+        <a href="../../../../games">
             <i class="fa-solid fa-gamepad fa-fw"></i>
             <span>&ensp;Games</span>
         </a>
@@ -130,7 +138,7 @@
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
                 
-                <a href="../index.html">
+                <a href="../../../../index.html">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
@@ -139,7 +147,7 @@
                     </div>
                 </a>
                 
-                <a href="../about">
+                <a href="../../../../about">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -148,7 +156,7 @@
                     </div>
                 </a>
                 
-                <a href="../archives">
+                <a href="../../../../archives">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
@@ -157,7 +165,7 @@
                     </div>
                 </a>
                 
-                <a href="../categories">
+                <a href="../../../../categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -166,7 +174,7 @@
                     </div>
                 </a>
                 
-                <a href="../tags">
+                <a href="../../../../tags">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-tags fa-fw"></i>
@@ -175,7 +183,7 @@
                     </div>
                 </a>
                 
-                <a href="../games">
+                <a href="../../../../games">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-gamepad fa-fw"></i>
@@ -193,89 +201,122 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
+            <div class="article">
+    <div>
+        <h1>蓝桥杯-幸运数解法</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/6
+        </span>
         
-        
-        
-        <span>
-            <a href="Hello-world/" style="background: #00bcd4">
+        <span class="category">
+            <a href="../../../../categories/book/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                Hello world
+                knowledge
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="c/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                C/C++
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #ff7d73">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator/" style="color: #00bcd4">算法题</a>
+            </span>
+            
         </span>
-        
-        
-        
-        <span>
-            <a href="trophy/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                蓝桥杯
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="calculator/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法题
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="calculator-simple/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法思路
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="flask/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                科普
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="school/" style="background: #00a596">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                使用教程
-            </a>
-        </span>
-        
         
     </div>
+    
+    <div class="content" v-pre>
+        <p>蓝桥杯2023年大学A组真题—幸运数解法</p>
+<span id="more"></span>
+
+<p>还好数据要求不大，否则真的很容易超时（</p>
+<pre><code class="c++">#include &lt;iostream&gt;
+using namespace std;
+
+int main() &#123;
+    int score[5][37] = &#123;0&#125;; //定义数组表示第i位的和为j，最大为四九三十六
+    int i = 0;
+    for (int j = 1; j &lt; 37; j++) &#123;
+        for (int k = 1; k &lt; 10000; k++) &#123;
+            if (k &gt; 0 &amp;&amp; k &lt; 10) &#123; //一位数
+                if (j == k) &#123;
+                    i = 1;
+                    score[i][j]++;
+                &#125;
+            &#125; else if (k &gt; 9 &amp;&amp; k &lt; 100) &#123; //两位数
+                i = 2;
+                int a = k / 10;
+                int b = k % 10;
+                if (a + b == j) &#123; //各位数字求和判断是否等于目标j
+                    score[i][j]++;
+                &#125;
+            &#125; else if (k &gt; 99 &amp;&amp; k &lt; 1000) &#123; 
+                i = 3;
+                int a = k / 100;
+                int b = (k / 10) % 10;
+                int c = k % 10;
+                if (a + b + c == j) &#123;
+                    score[i][j]++;
+                &#125;
+            &#125; else if (k &gt; 999 &amp;&amp; k &lt; 10000) &#123;
+                i = 4;
+                int a = k / 1000;
+                int b = (k / 100) % 10;
+                int c = (k / 10) % 10;
+                int d = k % 10;
+                if (a + b + c + d == j) &#123;
+                    score[i][j]++;
+                &#125;
+            &#125;
+        &#125;
+    &#125;
+    long long sum = 0;
+    for (int i = 1; i &lt; 5; i++) &#123; //前半部分
+        for (int j = 1; j &lt;= i * 9; j++) &#123; 
+            for (int k = 1; k &lt;= i; k++) &#123; //后半部分，可以往前面补0
+                sum += score[i][j] * score[k][j];
+            &#125;
+        &#125;
+    &#125;
+    cout &lt;&lt; sum;
+    return 0;
+&#125;
+</code></pre>
+
+    </div>
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+    
     
 </div>
 
@@ -313,7 +354,31 @@
         </transition>
         
     </div>
-    <script src="../js/main.js"></script>
+    <script src="../../../../js/main.js"></script>
+    
+    
+
+
+<script>
+    Waline.init({
+        dark: "html.dark",
+        el: "#waline-container",
+        serverURL: "https://www.emotionsf.icu",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick,mail".split(","),
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "16",
+        login: "enable",
+        
+    });
+</script>
+
+
+
     
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
 </html>
