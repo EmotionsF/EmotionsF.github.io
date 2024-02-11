@@ -522,7 +522,7 @@
 }
 
 #menu #desktop-menu .theme-switcher {
-    color: #fff;
+    color: #0000004d;
     position: absolute;
     right: 20px;
     transform: scale(1.5) translate(-50%, 85%);
@@ -549,11 +549,11 @@
 
 #menu #mobile-menu .items,
 #menu #mobile-menu .items a {
-    color: #555;
+    color: #eee;
 }
 
 #menu #mobile-menu .title {
-    color: #555;
+    color: #eee;
     cursor: pointer;
     z-index: 1003;
 }
