@@ -156,15 +156,6 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
                     </div>
                 </a>
-                <div class="item" @click="handleThemeSwitch">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-fw theme-switcher"
-                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">
-                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
-                    </div>
-                </div>
                 
                 <a href="../../../../about">
                     <div class="item">
@@ -174,15 +165,6 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
                     </div>
                 </a>
-                <div class="item" @click="handleThemeSwitch">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-fw theme-switcher"
-                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">
-                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
-                    </div>
-                </div>
                 
                 <a href="../../../../archives">
                     <div class="item">
@@ -192,15 +174,6 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
                     </div>
                 </a>
-                <div class="item" @click="handleThemeSwitch">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-fw theme-switcher"
-                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">
-                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
-                    </div>
-                </div>
                 
                 <a href="../../../../categories">
                     <div class="item">
@@ -210,15 +183,6 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
                     </div>
                 </a>
-                <div class="item" @click="handleThemeSwitch">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-fw theme-switcher"
-                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">
-                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
-                    </div>
-                </div>
                 
                 <a href="../../../../tags">
                     <div class="item">
@@ -228,16 +192,16 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
                     </div>
                 </a>
+                
                 <div class="item" @click="handleThemeSwitch">
                     <div style="min-width: 20px; max-width: 50px; width: 10%">
                         <i class="fa-solid fa-fw theme-switcher"
                             :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
                     </div>
                     <div style="min-width: 100px; max-width: 150%; width: 20%">
-                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                        主题配色: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
                     </div>
                 </div>
-                
             </div>
         </transition>
     </nav>
@@ -277,17 +241,17 @@
             
             <span class="tag">
                 
-                <a href="../../../../tags/c/" style="color: #00a596">C/C++</a>
+                <a href="../../../../tags/c/" style="color: #00bcd4">C/C++</a>
             </span>
             
             <span class="tag">
                 
-                <a href="../../../../tags/trophy/" style="color: #ffa2c4">蓝桥杯</a>
+                <a href="../../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
             </span>
             
             <span class="tag">
                 
-                <a href="../../../../tags/calculator/" style="color: #00bcd4">算法题</a>
+                <a href="../../../../tags/calculator/" style="color: #ffa2c4">算法题</a>
             </span>
             
         </span>
