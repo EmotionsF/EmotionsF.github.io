@@ -286,7 +286,7 @@
 }
 
 :root.dark #home-head #home-info .loop {
-    background: #000;
+    background: #111;
 }
 
 #home-head #home-info,
@@ -500,7 +500,7 @@
 }
 
 :root.dark #menu {
-    background: #111;
+    background: rgb(32, 32, 38);
     box-shadow: 0 -1px 10px 0 #0000004d;
 }
 
