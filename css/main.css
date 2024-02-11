@@ -589,7 +589,7 @@
 #menu.menu-color #desktop-menu .theme-switcher,
 #menu.menu-color #mobile-menu a,
 #menu.menu-color #mobile-menu .title {
-    color: #fff;
+    color: #0000004e;
 }
 
 :root.dark #menu.menu-color {
