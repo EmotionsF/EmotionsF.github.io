@@ -522,7 +522,7 @@
 }
 
 #menu #desktop-menu .theme-switcher {
-    color: #0000004d;
+    color: #555;
     position: absolute;
     right: 20px;
     transform: scale(1.5) translate(-50%, 85%);
@@ -568,7 +568,7 @@
 }
 
 #menu-curtain {
-    background: #0003;
+    background: rgba(0, 0, 0, 0.372);
     height: 100%;
     left: 0;
     position: fixed;
@@ -588,8 +588,9 @@
 #menu.menu-color #desktop-menu a,
 #menu.menu-color #desktop-menu .theme-switcher,
 #menu.menu-color #mobile-menu a,
-#menu.menu-color #mobile-menu .title {
-    color: #0000004e;
+#menu.menu-color #mobile-menu .title
+#menu.menu-color #mobile-menu .theme-switcher {
+    color: #f7f4f4;
 }
 
 :root.dark #menu.menu-color {
