@@ -84,20 +84,6 @@ const app = Vue.createApp({
             }
             this.scrollTop = newScrollTop;
         },
-        // main.js
-        setDarkMode(dark) {
-            if (dark) {
-                document.documentElement.classList.add("dark");
-                document
-                .getElementById("highlight-style-dark")
-                .removeAttribute("disabled");
-            } else {
-                document.documentElement.classList.remove("dark");
-                document
-                .getElementById("highlight-style-dark")
-                .setAttribute("disabled", "");
-            }
-        },
     },
 });
 app.mount("#layout");
