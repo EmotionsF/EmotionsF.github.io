@@ -588,8 +588,8 @@
 #menu.menu-color #desktop-menu a,
 #menu.menu-color #desktop-menu .theme-switcher,
 #menu.menu-color #mobile-menu a,
-#menu.menu-color #mobile-menu .title
-#menu.menu-color #mobile-menu .theme-switcher
+#menu.menu-color #mobile-menu .title,
+#menu.menu-color #mobile-menu .theme-switcher,
 #menu.menu-color #mobile-menu .items {
     color: #f7f4f4;
 }
