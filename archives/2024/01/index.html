@@ -97,26 +97,41 @@
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
         
         <a href="../../../about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About Me</span>
         </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
         
         <a href="../../../archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
         
         <a href="../../../categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
         
         <a href="../../../tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
         
     </nav>
     <nav id="mobile-menu">
@@ -135,6 +150,15 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
                     </div>
                 </a>
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
                 
                 <a href="../../../about">
                     <div class="item">
@@ -144,6 +168,15 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
                     </div>
                 </a>
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
                 
                 <a href="../../../archives">
                     <div class="item">
@@ -153,6 +186,15 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
                     </div>
                 </a>
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
                 
                 <a href="../../../categories">
                     <div class="item">
@@ -162,6 +204,15 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
                     </div>
                 </a>
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
                 
                 <a href="../../../tags">
                     <div class="item">
@@ -171,6 +222,15 @@
                         <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
                     </div>
                 </a>
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
                 
             </div>
         </transition>
@@ -206,7 +266,7 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/Hello-world/" style="color: #00a596">Hello world</a>
+                            <a href="../../../tags/Hello-world/" style="color: #00bcd4">Hello world</a>
                         </span>
                         
                     </span>
@@ -242,7 +302,7 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/usage/" style="color: #ff7d73">使用教程</a>
+                            <a href="../../../tags/usage/" style="color: #00bcd4">使用教程</a>
                         </span>
                         
                     </span>
@@ -278,12 +338,12 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/calculator-simple/" style="color: #00bcd4">算法思路</a>
+                            <a href="../../../tags/calculator-simple/" style="color: #ff7d73">算法思路</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/flask/" style="color: #ffa2c4">科普</a>
+                            <a href="../../../tags/flask/" style="color: #00a596">科普</a>
                         </span>
                         
                     </span>
@@ -319,17 +379,17 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/c/" style="color: #ff7d73">C/C++</a>
+                            <a href="../../../tags/c/" style="color: #00bcd4">C/C++</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
+                            <a href="../../../tags/trophy/" style="color: #ffa2c4">蓝桥杯</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/calculator/" style="color: #ff7d73">算法题</a>
+                            <a href="../../../tags/calculator/" style="color: #00bcd4">算法题</a>
                         </span>
                         
                     </span>
@@ -365,17 +425,17 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/c/" style="color: #00bcd4">C/C++</a>
+                            <a href="../../../tags/c/" style="color: #ffa2c4">C/C++</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/trophy/" style="color: #00a596">蓝桥杯</a>
+                            <a href="../../../tags/trophy/" style="color: #ff7d73">蓝桥杯</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/calculator/" style="color: #00bcd4">算法题</a>
+                            <a href="../../../tags/calculator/" style="color: #00a596">算法题</a>
                         </span>
                         
                     </span>
@@ -411,17 +471,17 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/c/" style="color: #ff7d73">C/C++</a>
+                            <a href="../../../tags/c/" style="color: #03a9f4">C/C++</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
+                            <a href="../../../tags/trophy/" style="color: #00a596">蓝桥杯</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/calculator/" style="color: #ff7d73">算法题</a>
+                            <a href="../../../tags/calculator/" style="color: #03a9f4">算法题</a>
                         </span>
                         
                     </span>
@@ -457,12 +517,12 @@
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/poem/" style="color: #ff7d73">诗</a>
+                            <a href="../../../tags/poem/" style="color: #00a596">诗</a>
                         </span>
                         
                         <span class="tag">
                             
-                            <a href="../../../tags/book-heart/" style="color: #03a9f4">Stories</a>
+                            <a href="../../../tags/book-heart/" style="color: #00bcd4">Stories</a>
                         </span>
                         
                     </span>
