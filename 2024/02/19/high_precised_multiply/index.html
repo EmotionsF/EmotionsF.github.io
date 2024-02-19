@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/css/cursor.min.css">
     <script src="/js/cursor.min.js"></script>
     <meta charset="utf-8" />
-    <title>Tags: 使用教程 | Katayo&#39;s Nekobox</title>
+    <title>蓝桥杯——高精度平方差 | Katayo&#39;s Nekobox</title>
     <script type="text/javascript" src="\js\crash_cheat.js"></script>
     <meta name="author" content="Katayo Kizuna" />
     <meta name="description" content="" />
@@ -51,7 +51,7 @@
     rel="stylesheet"
     href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
 />
-<script src="../../js/lib/highlight.js"></script>
+<script src="../../../../js/lib/highlight.js"></script>
 
 
 <script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
@@ -66,17 +66,25 @@
     disabled
     href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
 />
-<script src="../../js/lib/highlight.js"></script>
+<script src="../../../../js/lib/highlight.js"></script>
 
 
 
-<script src="../../js/lib/preview.js"></script>
+<script src="../../../../js/lib/preview.js"></script>
 
 
 
 
 
-<link rel="stylesheet" href="../../css/main.css" />
+
+<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
+<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
+
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
 
 <meta name="generator" content="Hexo 6.3.0"></head>
 <body>
@@ -86,7 +94,7 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>加载过慢请刷新(●´∀｀●) </p>
-                    <img src="../../images/loading.gif" />
+                    <img src="../../../../images/loading.gif" />
                 </div>
             </div>
         </transition>
@@ -96,7 +104,7 @@
             <span>KATAYO&#39;S NEKOBOX</span>
         </a>
         
-        <a href="../../index.html">
+        <a href="../../../../index.html">
             <i class="fa-solid fa-house fa-fw"></i>
             <span>&ensp;Home</span>
         </a>
@@ -104,7 +112,7 @@
             :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
             @click="handleThemeSwitch"></i>
         
-        <a href="../../about">
+        <a href="../../../../about">
             <i class="fa-solid fa-id-card fa-fw"></i>
             <span>&ensp;About Me</span>
         </a>
@@ -112,7 +120,7 @@
             :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
             @click="handleThemeSwitch"></i>
         
-        <a href="../../archives">
+        <a href="../../../../archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
             <span>&ensp;Archives</span>
         </a>
@@ -120,7 +128,7 @@
             :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
             @click="handleThemeSwitch"></i>
         
-        <a href="../../categories">
+        <a href="../../../../categories">
             <i class="fa-solid fa-bookmark fa-fw"></i>
             <span>&ensp;Categories</span>
         </a>
@@ -128,7 +136,7 @@
             :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
             @click="handleThemeSwitch"></i>
         
-        <a href="../../tags">
+        <a href="../../../../tags">
             <i class="fa-solid fa-tags fa-fw"></i>
             <span>&ensp;Tags</span>
         </a>
@@ -145,7 +153,7 @@
         <transition name="slide">
             <div class="items" v-show="showMenuItems">
                 
-                <a href="../../index.html">
+                <a href="../../../../index.html">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-house fa-fw"></i>
@@ -154,7 +162,7 @@
                     </div>
                 </a>
                 
-                <a href="../../about">
+                <a href="../../../../about">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-id-card fa-fw"></i>
@@ -163,7 +171,7 @@
                     </div>
                 </a>
                 
-                <a href="../../archives">
+                <a href="../../../../archives">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-box-archive fa-fw"></i>
@@ -172,7 +180,7 @@
                     </div>
                 </a>
                 
-                <a href="../../categories">
+                <a href="../../../../categories">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-bookmark fa-fw"></i>
@@ -181,7 +189,7 @@
                     </div>
                 </a>
                 
-                <a href="../../tags">
+                <a href="../../../../tags">
                     <div class="item">
                         <div style="min-width: 20px; max-width: 50px; width: 10%">
                             <i class="fa-solid fa-tags fa-fw"></i>
@@ -208,160 +216,167 @@
 </transition>
 
         <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-            <div id="archives">
-    
-    <div class="categories-tags">
+            <div class="article">
+    <div>
+        <h1>蓝桥杯——高精度平方差</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/19
+        </span>
         
-        
-        
-        <span>
-            <a href="../c/" style="background: #ffa2c4">
+        <span class="category">
+            <a href="../../../../categories/book/">
                 <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
-                C/C++
+                knowledge
             </a>
         </span>
         
         
-        
-        <span>
-            <a href="../trophy/" style="background: #00bcd4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                蓝桥杯
-            </a>
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #ff7d73">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator/" style="color: #ffa2c4">算法题</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/Python/" style="color: #00bcd4">Python</a>
+            </span>
+            
         </span>
-        
-        
-        
-        <span>
-            <a href="../calculator/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法题
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="../Hello-world/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Hello world
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="../Python/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Python
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="../calculator-simple/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                算法思路
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="../flask/" style="background: #ffa2c4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                科普
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="../poem/" style="background: #ff7d73">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                诗
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="../book-heart/" style="background: #03a9f4">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                Stories
-            </a>
-        </span>
-        
-        
-        
-        <span>
-            <a href="" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
-                <span class="icon">
-                    <i class="fa-solid fa-tags fa-fw"></i>
-                </span>
-                使用教程
-            </a>
-        </span>
-        
-        
-        
         
     </div>
     
-    <div class="timeline">
-        <div class="timeline-tail"></div>
-        <div class="timeline-content">
-            <div class="item-time">2024/2/3</div>
-            <a href="../../2024/02/03/usage_of_comment/">
-                <h3>有关本人博客评论区的一些使用教程</h3>
-            </a>
-            <div class="info">
-                
-                <span class="category">
-                    <a href="../../categories/book/">
-                        <span class="icon">
-                            <i class="fa-solid fa-bookmark fa-fw"></i>
-                        </span>
-                        knowledge
-                    </a>
-                </span>
-                
-                
-                <span class="tags">
-                    <span class="icon">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </span>
-                    
-                    
-                    <span class="tag">
-                        
-                        <a href="" style="color: #00a596">使用教程</a>
-                    </span>
-                    
-                </span>
-                
-            </div>
-        </div>
+    <div class="content" v-pre>
+        <h4 id="Python-秒-默-全"><a href="#Python-秒-默-全" class="headerlink" title="Python 秒 默 全"></a>Python 秒 默 全</h4><span id="more"></span>
+
+<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>很多人喜欢用计算机来计算特别大的数据，比如使用科学计数法之后右上角需要写的指数是几百上千的那种。但是，计算机的数据类型限制了我们计算的最大数字大小。<br>即使是最大的long long数据类型，最大也只有9223372036854775807，即2的63次方减1<br>这对于野心家来说肯定远远不够，所以我们就需要更加精确的能够计算成百上千位数据的算法。</p>
+<p>先奉上用C++写的高精度算法代码：</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+
+bool cmp(vector&lt;int&gt; &amp;a, vector&lt;int&gt; &amp;b) &#123;
+    if (a.size() != b.size())
+        return a.size() &gt; b.size();
+    for (int i = a.size() - 1; i &gt;= 0; i--) &#123;
+        if (a[i] != b[i])
+            return a[i] &gt; b[i];
+    &#125;
+    return true;
+&#125;
+
+// 大整数相乘
+vector&lt;int&gt; multiply(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) &#123;
+    vector&lt;int&gt; C(A.size() + B.size());
+    for (int i = 0; i &lt; A.size(); i++) &#123;
+        for (int j = 0; j &lt; B.size(); j++) &#123;
+            C[i + j] += A[i] * B[j];
+        &#125;
+    &#125;
+    for (int i = 0, t = 0; i &lt; C.size(); i++) &#123;
+        t += C[i];
+        C[i] = t % 10;
+        t /= 10;
+    &#125;
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0)
+        C.pop_back();
+    return C;
+&#125;
+
+// 大整数相减
+vector&lt;int&gt; subtract(vector&lt;int&gt; &amp;a, vector&lt;int&gt; &amp;b) &#123;
+    int al = a.size(), bl = b.size();
+    vector&lt;int&gt; c(max(al, bl), 0); // 结果数组
+    for (int i = 0; i &lt; max(al, bl); i++) &#123;
+        if (i &lt; al) &#123;
+            a[i] -= (i &lt; bl ? b[i] : 0);
+        &#125;
+        if (a[i] &lt; 0) &#123;
+            a[i + 1]--;
+            a[i] += 10;
+        &#125;
+        c[i] = a[i];
+    &#125;
+    while (!c.empty() &amp;&amp; c.back() == 0) &#123;
+        c.pop_back(); // 去除前导零
+    &#125;
+    return c;
+&#125;
+
+int main() &#123;
+    string str1, str2, st1, st2;
+    cin &gt;&gt; str1 &gt;&gt; str2;
+    vector&lt;int&gt; A, B;
+    if (str1[0] == &#39;-&#39;) &#123;
+        for (int i = 1; i &lt; str1.size(); i++) &#123;
+            st1 += str1[i];
+        &#125;
+    &#125; else &#123;
+        st1 = str1;
+    &#125;
+    if (str2[0] == &#39;-&#39;) &#123;
+        for (int i = 1; i &lt; str2.size(); i++) &#123;
+            st2 += str2[i];
+        &#125;
+    &#125; else &#123;
+        st2 = str2;
+    &#125;
+    for (int i = st1.size() - 1; i &gt;= 0; i--) &#123;
+        A.push_back(st1[i] - &#39;0&#39;);
+    &#125;
+    for (int i = st2.size() - 1; i &gt;= 0; i--) &#123;
+        B.push_back(st2[i] - &#39;0&#39;);
+    &#125;
+    vector&lt;int&gt; sg1 = multiply(A, A);
+    vector&lt;int&gt; sg2 = multiply(B, B);
+    vector&lt;int&gt; output;
+    if (cmp(sg1, sg2))
+        output = subtract(sg1, sg2);
+    else &#123;
+        cout &lt;&lt; &#39;-&#39;;
+        output = subtract(sg2, sg1);
+    &#125;
+    for (int i = output.size() - 1; i &gt;= 0; i--) &#123;
+        cout &lt;&lt; output[i];
+    &#125;
+    cout &lt;&lt; endl;
+    return 0;
+&#125;
+</code></pre>
+
     </div>
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="waline-container"></div>
+    </div>
+    
+    
     
 </div>
 
@@ -444,8 +459,32 @@
         </transition>
         
     </div>
-    <script src="../../js/main.js"></script>
+    <script src="../../../../js/main.js"></script>
     <!-- 樱花特效 -->    
+    
+    
+
+
+<script>
+    Waline.init({
+        dark: "html.dark",
+        el: "#waline-container",
+        serverURL: "https://www.emotionsf.icu",
+        commentCount: true,
+        pageview: false,
+        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
+        meta: "nick,mail,link".split(","),
+        requiredMeta: "nick,mail".split(","),
+        lang: "zh-CN",
+        wordLimit: 0,
+        pageSize: "16",
+        login: "enable",
+        
+    });
+</script>
+
+
+
     
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
 </html>
