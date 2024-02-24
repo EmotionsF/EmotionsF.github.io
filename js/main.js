@@ -3,7 +3,7 @@ const app = Vue.createApp({
     data() {
         return {
             theme: localStorage.getItem("theme") || "auto",
-            loading: false,
+            loading: true,
             hiddenMenu: false,
             showMenuItems: false,
             menuColor: false,
