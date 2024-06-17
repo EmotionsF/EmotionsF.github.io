@@ -77,10 +77,8 @@
 
 
 
-<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
 
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
 
 
 
@@ -252,7 +250,7 @@
 </code></pre>
 <p><strong>嗨！</strong> 既然都已经来到我的世界了，就不要忘了最重要的东西哦 ♪ (●’◡’●)ﾉ</p>
 <ul>
-<li>📧 <a href="mailto:&#119;&#x61;&#x73;&#x68;&#105;&#111;&#98;&#105;&#x33;&#x31;&#48;&#x39;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;">&#119;&#x61;&#x73;&#x68;&#105;&#111;&#98;&#105;&#x33;&#x31;&#48;&#x39;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#x6d;</a></li>
+<li>📧 <a href="mailto:&#119;&#x61;&#x73;&#104;&#x69;&#111;&#x62;&#x69;&#51;&#x31;&#48;&#57;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#119;&#x61;&#x73;&#104;&#x69;&#111;&#x62;&#x69;&#51;&#x31;&#48;&#57;&#x40;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a></li>
 <li>👾 <a target="_blank" rel="noopener" href="https://discord.gg/Gzk8XDbAW2">KatayoのNekobox</a>    (Discord Channel)</li>
 <li>✈ <a target="_blank" rel="noopener" href="https://t.me/Katayocyberangel">Telegram Link</a></li>
 <li>🐈‍⬛ <a target="_blank" rel="noopener" href="https://github.com/EmotionsF">github</a></li>
@@ -268,10 +266,10 @@
     
     
     
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
     
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
     
     
 </div>
@@ -361,24 +359,16 @@
     
 
 
-<script>
-    Waline.init({
-        dark: "html.dark",
-        el: "#waline-container",
-        serverURL: "https://www.emotionsf.icu",
-        commentCount: true,
-        pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick,mail".split(","),
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "16",
-        login: "enable",
-        
-    });
-</script>
 
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://twikoocommentengine-emotionsfs-projects.vercel.app/",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
 
 
     

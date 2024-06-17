@@ -77,10 +77,8 @@
 
 
 
-<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
 
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
 
 
 
@@ -256,7 +254,7 @@
             
             <span class="tag">
                 
-                <a href="../../../../tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="color: #03a9f4">实用工具</a>
+                <a href="../../../../tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="color: #ffa2c4">实用工具</a>
             </span>
             
         </span>
@@ -1152,10 +1150,10 @@ void usleep(__int64 usec) &#123; //网上抄来的适用于windows平台的时�
     
     
     
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
     
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
     
     
 </div>
@@ -1245,24 +1243,16 @@ void usleep(__int64 usec) &#123; //网上抄来的适用于windows平台的时�
     
 
 
-<script>
-    Waline.init({
-        dark: "html.dark",
-        el: "#waline-container",
-        serverURL: "https://www.emotionsf.icu",
-        commentCount: true,
-        pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick,mail".split(","),
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "16",
-        login: "enable",
-        
-    });
-</script>
 
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://twikoocommentengine-emotionsfs-projects.vercel.app/",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
 
 
     

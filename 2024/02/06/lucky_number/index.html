@@ -77,10 +77,8 @@
 
 
 
-<script src="https://cdn.bootcdn.net/ajax/libs/waline/2.15.7/waline.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline.min.css" />
-<link rel="stylesheet" href="https://cdn.staticfile.org/waline/2.15.8/waline-meta.min.css" />
 
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
 
 
 
@@ -251,12 +249,12 @@
             
             <span class="tag">
                 
-                <a href="../../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
+                <a href="../../../../tags/trophy/" style="color: #ffa2c4">蓝桥杯</a>
             </span>
             
             <span class="tag">
                 
-                <a href="../../../../tags/calculator/" style="color: #00bcd4">算法题</a>
+                <a href="../../../../tags/calculator/" style="color: #00a596">算法题</a>
             </span>
             
         </span>
@@ -327,10 +325,10 @@ int main() &#123;
     
     
     
-    <div id="comment">
-        <div id="waline-container"></div>
-    </div>
     
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
     
     
 </div>
@@ -420,24 +418,16 @@ int main() &#123;
     
 
 
-<script>
-    Waline.init({
-        dark: "html.dark",
-        el: "#waline-container",
-        serverURL: "https://www.emotionsf.icu",
-        commentCount: true,
-        pageview: false,
-        emoji: "https://unpkg.com/@waline/emojis@1.2.0/weibo,https://unpkg.com/@waline/emojis@1.2.0/alus,https://unpkg.com/@waline/emojis@1.2.0/bilibili,https://unpkg.com/@waline/emojis@1.2.0/qq,https://unpkg.com/@waline/emojis@1.2.0/tieba,https://unpkg.com/@waline/emojis@1.2.0/tw-emoji".split(","),
-        meta: "nick,mail,link".split(","),
-        requiredMeta: "nick,mail".split(","),
-        lang: "zh-CN",
-        wordLimit: 0,
-        pageSize: "16",
-        login: "enable",
-        
-    });
-</script>
 
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://twikoocommentengine-emotionsfs-projects.vercel.app/",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
 
 
     
