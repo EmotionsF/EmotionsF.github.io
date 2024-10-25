@@ -1,0 +1,1259 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <meta charset="utf-8" />
+    <title>C语言程序——学生信息管理系统 | Katayo&#39;s Nekobox</title>
+    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <meta name="author" content="Katayo Kizuna" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 下雪效果 -->
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
+    <!-- 红心烟花效果 -->
+    <!-- 樱花特效 -->
+    <script async src="/js/sakura.js"></script>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css" />
+<script src="../../../../js/lib/math.js"></script>
+
+
+<script src="../../../../js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请刷新(●´∀｀●) </p>
+                    <img src="../../../../images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KATAYO&#39;S NEKOBOX</span>
+        </a>
+        
+        <a href="../../../../index.html">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About Me</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KATAYO&#39;S NEKOBOX</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="../../../../index.html">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>C语言程序——学生信息管理系统</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/3/20
+        </span>
+        
+        <span class="category">
+            <a href="../../../../categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                knowledge
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #00a596">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator-simple/" style="color: #00bcd4">算法思路</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="color: #ff7d73">实用工具</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>自己编写的学生管理器系统的部分代码实现</p>
+<h5 id="maybe-全网功能最多的C语言作业"><a href="#maybe-全网功能最多的C语言作业" class="headerlink" title="maybe 全网功能最多的C语言作业"></a>maybe 全网功能最多的C语言作业</h5><span id="more"></span>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>辅导员开学的时候给了我们当头一棒————不能用C++来编写学生管理器程序，导致我研究了一个寒假的只能用在C++上的库函数直接作废了。<br>但是，这没有关系。既然那些函数都不能用了，那不如自己动手，用c语言来实现C++的功能。<br>目前本程序可以实现的功能有：</p>
+<blockquote>
+<ol>
+<li>基本的学生管理的功能，有直观的主菜单，可以录入学生的信息，实现添加学生信息、显示学生信息、查找学生信息、删除学生信息、修改学生信息、保存学生信息以及退出等功能。存储方式的特色是动态数组和链式存储并行，极大的提高了存储灵活度。<br></li>
+<li>排序功能，比如按总分对所有学生进行排序，按指定学科对学生成绩进行排序<br></li>
+<li>绘制简单的学生成绩分布直方图（当然只能是控制台输出的那种）<br></li>
+<li>显示总分或不同科目的最高分&#x2F;最低分&#x2F;平均分，并且统计不及格的人数及其占比<br></li>
+<li>最多保存4种不同类型的科目信息和7份不同的学生成绩，支持删除信息以及合并学生成绩信息。 <br></li>
+<li>所有的科目信息和成绩信息都可以自定义，并且可以随时查看。<br></li>
+<li>支持重启软件，或者一键清除内存中的学生信息<br></li>
+<li>还有可能会吓你一跳的彩蛋等你发现。</li>
+</ol>
+</blockquote>
+<p>&#x2F;* WARRING：本程序代码行数达到2973行，加上彩蛋头文件则达到3122行，谨慎全文阅读 *&#x2F;</p>
+<p>话不多说，牛不多吹，切入正题</p>
+<h5 id="警告：密集恐惧症可以跳过下列代码展示，直接去文章底部看源码"><a href="#警告：密集恐惧症可以跳过下列代码展示，直接去文章底部看源码" class="headerlink" title="警告：密集恐惧症可以跳过下列代码展示，直接去文章底部看源码"></a>警告：密集恐惧症可以跳过下列代码展示，直接去文章底部看源码</h5><h2 id="原理及相关功能"><a href="#原理及相关功能" class="headerlink" title="原理及相关功能"></a>原理及相关功能</h2><p>1.相关结构体的定义：</p>
+<pre><code class="c">int numberOfClasses = 0; //表示课程数量的全局变量
+
+typedef struct Name &#123;
+    char name[25]; //学科名称
+    int maxScore; //最高分
+    double l_score; //学分
+    struct Name* next; //下一个学科链表结构
+&#125; Name;
+
+typedef struct StudentList &#123; //创建学生信息结构体
+    char name[20]; //姓名（最长20个字符，在UTF-8编码下能够保存6个汉字）
+    int number; //学号
+    int* scores; //成绩数组
+    double average; //平均分
+    double sum; //总分
+    double grade; //绩点
+&#125; Student;
+
+typedef struct List &#123; //创建成绩单链表结构
+    Student stu;
+    struct List* next;
+&#125; Node;
+
+Node* head = NULL; //初始化学生信息的链表头部
+Node* copy_head_static = NULL; //静态的链表拷贝，后面的一些功能会用到
+Name* inform = NULL; //初始化科目信息的链表头部
+</code></pre>
+<p>2.自己用c语言实现的一些函数</p>
+<pre><code class="c">Node *FreeList(Node *ahead) &#123; //用于清除成绩单占用的内存，防止内存泄漏
+    Node *p = ahead;
+
+    while (p != NULL) &#123;
+        Node *q = p-&gt;next;
+        free(p);
+        p = q;
+    &#125;
+    ahead = NULL;
+    return ahead;
+&#125;
+
+Name *FreeNameList(Name *infor) &#123; //用于清除科目信息占用的内存，重启程序时用到
+    Name *p = infor;
+    while (p != NULL) &#123;
+        Name *q = p-&gt;next;
+        free(p);
+        p = q;
+    &#125;
+    infor = NULL;
+    return infor;
+&#125;
+
+Node *Copylist(Node *ahead) &#123; //用于复制原有成绩单，然后将副本进行排序，避免直接对原成绩单进行修改
+    if (ahead == NULL) &#123;
+        return NULL;
+    &#125;
+    Node *new_node = (Node *)malloc(sizeof(Node));
+    new_node-&gt;stu = ahead-&gt;stu;
+    new_node-&gt;next = Copylist(ahead-&gt;next);
+
+    return new_node;
+&#125;
+</code></pre>
+<p>3.设计一个主菜单</p>
+<pre><code class="c">void StartMenu() &#123; //打印进入程序时显示的菜单
+    system(&quot;cls&quot;);
+    printf(&quot;****************************************************************\n&quot;);
+    printf(&quot;*\t欢迎使用学生成绩管理系统\t\t*\n&quot;);
+    printf(&quot;*\t\t请选择功能\t\t\t*\n&quot;);
+    printf(&quot;****************************************************************\n&quot;);
+    printf(&quot;*\t\t1.录入学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t2.打印学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t3.保存学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t4.读取学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t5.查找学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t6.修改学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t7.删除学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\t8.启动学生信息工具箱\t\t*\n&quot;); //计算统计类的功能都在这里
+    printf(&quot;*\t\t9.查看当前科目信息\t\t*\n&quot;);
+    printf(&quot;*\t\tR.清空学生信息\t\t\t*\n&quot;);
+    printf(&quot;*\t\tX.重置课程信息(重新启动程序)\t*\n&quot;);
+    printf(&quot;*\t\tM.管理已保存科目信息\t\t*\n&quot;);
+    printf(&quot;*\t\ti.显示程序功能提示\t\t*\n&quot;);
+    printf(&quot;*\t\t0.退出程序\t\t\t*\n&quot;);
+    printf(&quot;*************************************************\n&quot;);
+
+    printf(&quot;!.&gt;_&lt;||O_0\t\n&quot;); //浅浅在主菜单卖个萌 $&gt;_&lt;$
+&#125;
+</code></pre>
+<p>4.保存信息三件套</p>
+<pre><code class="c">Name *add_name() &#123; //创建新学科信息的函数
+    printf(&quot;请输入要统计的学科门数：&quot;);
+    scanf(&quot;%d&quot;, &amp;numberOfClasses);
+    Name *infor = (Name *)malloc(sizeof(Name));
+    Name *p = infor;
+    for (int i = 0; i &lt; numberOfClasses; i++) &#123;
+        printf(&quot;请输入第 %d 门学科的名称：&quot;, i + 1);
+        scanf(&quot;%s&quot;, p-&gt;name);
+        printf(&quot;请输入这门课程的最大分数： &quot;);
+        scanf(&quot;%d&quot;, &amp;p-&gt;maxScore);
+        if (i &lt; numberOfClasses - 1) &#123;
+            p-&gt;next = (Name *)malloc(sizeof(Name));
+            p = p-&gt;next; //此处采用了链式存储的形式存储学科信息，故采用链表遍历方法
+        &#125;
+    &#125;
+    p-&gt;next = NULL;
+    printf(&quot;科目信息保存成功！\n&quot;);
+    return infor;
+&#125;
+
+void InputStudent() &#123; //输入学生信息的函数
+    Node *NewNode = (Node *)malloc(sizeof(Node)); //创建一个新的学生信息结构
+    NewNode-&gt;next = NULL;
+    Node *p = head;
+    printf(&quot;输入学生学号：&quot;);
+    scanf(&quot;%d&quot;, &amp;NewNode-&gt;stu.number);
+    printf(&quot;输入学生姓名：&quot;);
+    scanf(&quot;%s&quot;, NewNode-&gt;stu.name);
+    int *array = (int *)malloc(sizeof(int) * numberOfClasses);
+    NewNode-&gt;stu.scores = array;
+    Name *q = inform;
+    double sum = 0;
+    for (int i = 0; i &lt; numberOfClasses; i++) &#123;
+        printf(&quot;请输入该学生 %s 的成绩： &quot;, q-&gt;name);
+        scanf(&quot;%d&quot;, &amp;NewNode-&gt;stu.scores[i]);
+
+        if (NewNode-&gt;stu.scores[i] &gt; q-&gt;maxScore || NewNode-&gt;stu.scores[i] &lt; 0) &#123;
+            printf(&quot;成绩输入无效，请确认成绩处于有效范围内。\n&quot;);
+            printf(&quot;添加学生信息失败\n&quot;);
+            free(NewNode);
+            system(&quot;pause&quot;);
+            return;
+        &#125;
+        sum += NewNode-&gt;stu.scores[i];
+        q = q-&gt;next;
+    &#125;
+    double avg = sum * 1.0 / numberOfClasses;
+    NewNode-&gt;stu.sum = sum;
+    NewNode-&gt;stu.average = avg;
+    while (p != NULL &amp;&amp; p-&gt;next != NULL) &#123; //此循环用于将学生信息加入链表尾部
+        p = p-&gt;next;
+    &#125;
+    if (p == NULL) &#123;
+        head = NewNode;
+    &#125; else &#123;
+        p-&gt;next = NewNode;
+    &#125;
+    printf(&quot;学生成绩录入完成！该学生的平均成绩为 %.2lf ,总分为 %.2lf \n&quot;, avg, sum);
+    system(&quot;pause&quot;);
+    // system(&quot;pause&quot;) 函数用于暂停程序，便于用户查看输出结果
+    system(&quot;cls&quot;);
+&#125;
+
+void SaveInfo() &#123; //保存学生信息到文件中的函数
+    system(&quot;cls&quot;);
+    printf(&quot;确定要保存吗？此操作会覆盖原有数据（按下y确定，按下其它按键返回）：&quot;);
+    char ch = getch(); //按键交互，按下对应按键即可实现对应功能
+    if (ch != &#39;y&#39;) &#123;
+        return;
+    &#125;
+    char namae_[25] = &quot;&quot;;
+    printf(&quot;目前储存的成绩信息情况如下：\n&quot;);
+    printf(&quot;成绩信息1：&quot;);
+    FILE *file1 = fopen(&quot;studinfo1.txt&quot;, &quot;r&quot;);
+    if (file1 == NULL) &#123; //逐个打印存档信息位的数据
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file1, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息2：&quot;);
+    FILE *file2 = fopen(&quot;studinfo2.txt&quot;, &quot;r&quot;);
+    if (file2 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file2, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息3：&quot;);
+    FILE *file3 = fopen(&quot;studinfo3.txt&quot;, &quot;r&quot;);
+    if (file3 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file3, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息4：&quot;);
+    FILE *file4 = fopen(&quot;studinfo4.txt&quot;, &quot;r&quot;);
+    if (file4 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file4, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息5：&quot;);
+    FILE *file5 = fopen(&quot;studinfo5.txt&quot;, &quot;r&quot;);
+    if (file5 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存&quot;);
+        fscanf(file5, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息6：&quot;);
+    FILE *file6 = fopen(&quot;studinfo6.txt&quot;, &quot;r&quot;);
+    if (file6 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存&quot;);
+        fscanf(file6, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息7：&quot;);
+    FILE *file7 = fopen(&quot;studinfo7.txt&quot;, &quot;r&quot;);
+    if (file7 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存&quot;);
+        fscanf(file7, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;\n提示：如果想要储存更多的学生信息，可以将学生信息复制到其它目录并重命名&quot;);
+    printf(&quot;\n请按键选择需要储存成绩的位置：&quot;);
+    FILE *file; //总文件指针
+    char selet = _getch();
+    char cach;
+    switch (selet) &#123;
+        case &#39;1&#39;:
+            file1 = fopen(&quot;studinfo1.txt&quot;, &quot;w&quot;);
+            file = file1;
+            break;
+        case &#39;2&#39;:
+            file2 = fopen(&quot;studinfo2.txt&quot;, &quot;w&quot;);
+            file = file2;
+            break;
+        case &#39;3&#39;:
+            file3 = fopen(&quot;studinfo3.txt&quot;, &quot;w&quot;);
+            file = file3;
+            break;
+        case &#39;4&#39;:
+            file4 = fopen(&quot;studinfo4.txt&quot;, &quot;w&quot;);
+            file = file4;
+            break;
+        case &#39;5&#39;:
+            file5 = fopen(&quot;studinfo5.txt&quot;, &quot;w&quot;);
+            file = file5;
+            break;
+        case &#39;6&#39;:
+            file6 = fopen(&quot;studinfo6.txt&quot;, &quot;w&quot;);
+            file = file6;
+            break;
+        case &#39;7&#39;:
+            file7 = fopen(&quot;studinfo7.txt&quot;, &quot;w&quot;);
+            file = file7;
+            break;
+        default:
+            printf(&quot;\n没有该选项！保存失败！\n按任意键回到主菜单。\n&quot;);
+            cach = _getch();
+            return;
+            break;
+    &#125;
+    if (file == NULL) &#123;
+        printf(&quot;打开文件失败！请检查文件管理权限！&quot;);
+        system(&quot;pause&quot;);
+        return;
+    &#125;
+    printf(&quot;\n请输入学生信息（班级）名称：&quot;);
+    char namae[25] = &quot;&quot;;
+    scanf(&quot;%s&quot;, namae);
+    Node *ent = head; //创建头指针
+    fprintf(file, &quot;%s\n&quot;, namae);
+    fprintf(file, &quot;%d\n&quot;, numberOfClasses); //保存学科数量
+    while (ent != NULL) &#123; //用于逐一将学生信息写入文件的循环
+        fprintf(file, &quot;%d\n&quot;, ent-&gt;stu.number);
+        fputs(ent-&gt;stu.name, file);
+        fprintf(file, &quot;\n&quot;);
+
+        for (int j = 0; j &lt; numberOfClasses; j++) &#123;
+            fprintf(file, &quot;%d\n&quot;, ent-&gt;stu.scores[j]);
+        &#125;
+        fprintf(file, &quot;%lf\n&quot;, ent-&gt;stu.average);
+        fprintf(file, &quot;%lf\n&quot;, ent-&gt;stu.sum);
+        ent = ent-&gt;next;
+    &#125;
+    fclose(file); //完成后关闭文件
+    printf(&quot;\n数据保存成功！\n&quot;);
+    system(&quot;pause&quot;);
+&#125;
+</code></pre>
+<p>5.读取信息的函数</p>
+<pre><code class="c">void ReadStudents() &#123;  //读取学生信息的函数
+    system(&quot;cls&quot;); //清屏函数
+    printf(&quot;确定要打开文件吗？读取操作会覆盖掉程序缓存在内存中的学生信息。\n&quot;);
+    printf(&quot;注意，在读取文件时，请务必确保本次读取的科目数量等于文件中的科目数量。\n&quot;);
+    printf(&quot;按下y确定，按下其它按键返回\n&quot;);
+    char yes = getch();
+    switch (yes) &#123;
+        case &#39;y&#39;:
+            break;
+        default:
+            return;
+    &#125;
+    printf(&quot;目前储存的成绩信息情况如下：\n&quot;);
+    char namae_[25] = &quot;&quot;;
+    printf(&quot;成绩信息1：&quot;);
+    FILE *file1 = fopen(&quot;studinfo1.txt&quot;, &quot;r&quot;);
+    if (file1 == NULL) &#123; //逐个打印存档信息位的数据
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file1, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息2：&quot;);
+    FILE *file2 = fopen(&quot;studinfo2.txt&quot;, &quot;r&quot;);
+    if (file2 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file2, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息3：&quot;);
+    FILE *file3 = fopen(&quot;studinfo3.txt&quot;, &quot;r&quot;);
+    if (file3 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file3, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息4：&quot;);
+    FILE *file4 = fopen(&quot;studinfo4.txt&quot;, &quot;r&quot;);
+    if (file4 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file4, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息5：&quot;);
+    FILE *file5 = fopen(&quot;studinfo5.txt&quot;, &quot;r&quot;);
+    if (file5 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存&quot;);
+        fscanf(file5, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息6：&quot;);
+    FILE *file6 = fopen(&quot;studinfo6.txt&quot;, &quot;r&quot;);
+    if (file6 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存&quot;);
+        fscanf(file6, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息7：&quot;);
+    FILE *file7 = fopen(&quot;studinfo7.txt&quot;, &quot;r&quot;);
+    if (file7 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125; else &#123;
+        printf(&quot;已保存&quot;);
+        fscanf(file7, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;\n请按键选择需要打开的成绩清单：&quot;);
+    FILE *file;
+    char selet = _getch();
+    char cach;
+    switch (selet) &#123;
+        case &#39;1&#39;:
+            file1 = fopen(&quot;studinfo1.txt&quot;, &quot;r&quot;);
+            file = file1;
+            break;
+        case &#39;2&#39;:
+            file2 = fopen(&quot;studinfo2.txt&quot;, &quot;r&quot;);
+            file = file2;
+            break;
+        case &#39;3&#39;:
+            file3 = fopen(&quot;studinfo3.txt&quot;, &quot;r&quot;);
+            file = file3;
+            break;
+        case &#39;4&#39;:
+            file4 = fopen(&quot;studinfo4.txt&quot;, &quot;r&quot;);
+            file = file4;
+            break;
+        case &#39;5&#39;:
+            file5 = fopen(&quot;studinfo5.txt&quot;, &quot;r&quot;);
+            file = file5;
+            break;
+        case &#39;6&#39;:
+            file6 = fopen(&quot;studinfo6.txt&quot;, &quot;r&quot;);
+            file = file6;
+            break;
+        case &#39;7&#39;:
+            file7 = fopen(&quot;studinfo7.txt&quot;, &quot;r&quot;);
+            file = file7;
+            break;
+        default:
+            printf(&quot;\n没有该选项！打开失败！\n按任意键回到主菜单。\n&quot;);
+            cach = _getch();
+            return;
+            break;
+    &#125;
+    if (file == NULL) &#123;
+        printf(&quot;打开失败！请检查文件是否存在以及是否可读取\n&quot;);
+        system(&quot;pause&quot;);
+        return;
+    &#125;
+    system(&quot;cls&quot;);
+    Node *p = (Node *)malloc(sizeof(Node)); //注意，接下来的读取操作会覆盖掉程序缓存在内存中的学生信息
+    p-&gt;next = NULL;  //
+    char str[250];
+    char namae[25] = &quot;\0&quot;;
+    fscanf(file, &quot;%s&quot;, namae);
+    int _numberOfClass = -1;
+    int i = 0;
+    fscanf(file, &quot;%d&quot;, &amp;_numberOfClass);
+    if (_numberOfClass != numberOfClasses) &#123; //比较当前读取信息是否和内存中的学科对应
+        printf(&quot;读取文件的科目数与当前科目数不一致！读取失败！\n按任意键返回主菜单。\n&quot;);
+        char cach = _getch();
+        return;
+    &#125;
+    head = p;
+    while (fscanf(file, &quot;%s&quot;, str) != EOF) &#123;
+
+        if (strcmp(str, &quot;&quot;)) &#123;
+            switch (i) &#123;
+                case 0:
+                    p-&gt;stu.number = atoi(str);
+                    break;
+                case 1:
+                    strcpy(p-&gt;stu.name, str);
+                    break;
+                case 2:
+                    p-&gt;stu.scores = (int *)malloc(sizeof(int) * numberOfClasses);
+                    for (int j = 0; j &lt; numberOfClasses; j++) &#123;
+                        p-&gt;stu.scores[j] = atoi(str);
+                        if (j &lt; numberOfClasses - 1) &#123;
+                            fscanf(file, &quot;%s&quot;, str);
+                        &#125;
+                    &#125;
+                    break;
+                case 3:
+                    p-&gt;stu.average = atof(str);
+                    break;
+                case 4:
+                    p-&gt;stu.sum = atof(str);
+                    break;
+                default:
+                    break;
+            &#125;
+        &#125;
+        i++;
+
+        if (i &gt; 4) &#123;
+            Node *q = (Node *)malloc(sizeof(Node));
+            q-&gt;next = NULL;
+            p-&gt;next = q;
+            p = q;
+            i = 0;
+        &#125;
+    &#125;
+    Node *temp = head;
+    while (temp-&gt;next-&gt;next != NULL) &#123; //清除链表末尾未初始化的数据
+        temp = temp-&gt;next;
+    &#125;
+    free(temp-&gt;next);
+    temp-&gt;next = NULL;
+    PrintStudents(head);
+    fclose(file);
+&#125;
+</code></pre>
+<ol start="5">
+<li>成绩统计图的代码实现<br>（个人认为这段代码并不是很好，因为重复的代码太多了，原谅我能力不足）</li>
+</ol>
+<pre><code class="c">void ScoreGraphSum() &#123; //该功能用来统计学生的成绩区间，并使数据可视化。(相当于横向的直方图）
+    system(&quot;cls&quot;);
+    if (head == NULL) &#123;
+        printf(&quot;还没有录入成绩！按任意键返回工具箱菜单。\n&quot;);
+        char cache = _getch();
+        return;
+    &#125;
+    Node* p = head;
+    printf(&quot;该功能用来统计学生的成绩区间，并使数据可视化。\n&quot;);
+    printf(&quot;使用前，请先输入学科和成绩区间的个数并自定义成绩区间的界限。\n&quot;);
+    printf(&quot;注意：成绩区间的个数必须为整数，成绩区间的界限必须由高到低输入。\n&quot;);
+    printf(&quot;请输入要统计的学科：（如果要统计总分，请输入 总分：）&quot;);
+    char subj[25];
+    scanf(&quot;%s&quot;, subj);
+    Name* gg = inform; //学科信息结构体的指针
+    
+    if (strstr(subj, &quot;总分&quot;)) &#123;
+        printf(&quot;请输入分数区间段的个数：（请输入2-15之间的整数）\n&quot;);
+        int number;
+        scanf(&quot;%d&quot;, &amp;number);
+        if (number &lt; 2 || number &gt; 15) &#123;
+            printf(&quot;输入错误！请重新输入。（请输入2-15之间的整数）\n&quot;);
+            scanf(&quot;%d&quot;, &amp;number);
+            if (number &lt; 2 || number &gt; 15) &#123;
+                printf(&quot;你这个人真是顽固不化。\n&quot;);
+                char cach = _getch();
+                return;
+            &#125;
+        &#125;
+        double* scored = (double*)malloc(sizeof(double) * (number - 1));
+        for (int i = 0; i &lt; number - 1; i++) &#123;
+            printf(&quot;请输入第 %d 个和第 %d 个区间的分界分数：&quot;, i + 1, i + 2);
+            scanf(&quot;%lf&quot;, &amp;scored[i]);
+        &#125;
+        int* people = (int*)malloc(sizeof(int) * (number));
+        for (int r = 0; r &lt; number; r++) &#123;
+            people[r] = 0;
+        &#125;
+        while (p != NULL) &#123;
+            int j = 0;
+            for (j = 0; j &lt; number; j++) &#123;
+                if (p-&gt;stu.sum &gt;= scored[j]) &#123;
+                    people[j]++;
+                    break;
+                &#125;
+                if (j == number - 1 &amp;&amp; p-&gt;stu.sum &lt; scored[j]) &#123;
+                    people[number - 1]++;
+                    break;
+                &#125;
+            &#125;
+            p = p-&gt;next;
+        &#125;
+        system(&quot;cls&quot;);
+        printf(&quot;\033[42m&quot;);
+        system(&quot;color 2F&quot;);
+        printf(&quot;\n*********************************************************************************\n&quot;);
+        printf(&quot;成绩统计图如下：\n\n&quot;);
+        for (int i = 0; i &lt; number; i++) &#123;
+            if (i == 0) &#123;
+                printf(&quot;满分 到 %.0lf\t\t&quot;, scored[i]);
+            &#125;
+            else if (i &gt; 0 &amp;&amp; i &lt; number - 1) &#123;
+                printf(&quot;%.0lf 到 %.0lf\t\t&quot;, scored[i - 1], scored[i]);
+            &#125;
+            else &#123;
+                printf(&quot;%.0lf 到 0\t\t&quot;, scored[i - 1]);
+            &#125;
+            for (int xj = 0; xj &lt; people[i]; xj++) &#123;
+                printf(&quot;**&quot;);
+            &#125;
+            printf(&quot;\n&quot;);
+        &#125;
+        printf(&quot;\n*********************************************************************************\n\n&quot;);
+        int peoplesum = 0;
+        double* percent = (double*)malloc(sizeof(double) * number);
+        for (int dj = 0; dj &lt; number; dj++) &#123;
+            peoplesum += people[dj];
+        &#125;
+        for (int fj = 0; fj &lt; number; fj++) &#123;
+            percent[fj] = (people[fj] * 1.0) / peoplesum * 100;
+            if (fj == 0) &#123;
+                printf(&quot;满分 到 %.1lf 分之间的同学占比：%.2lf %%\n&quot;, scored[fj], percent[fj]);
+            &#125;
+            else if (fj &gt; 0 &amp;&amp; fj &lt; number - 1) &#123;
+                printf(&quot;%.1lf 到 %.1lf 分之间的同学占比：%.2lf %%\n&quot;, scored[fj - 1], scored[fj], percent[fj]);
+            &#125;
+            else &#123;
+                printf(&quot;%.1lf 到 0 分之间的同学占比：%.2lf %%\n\n&quot;, scored[fj - 1], percent[fj]);
+            &#125;
+        &#125;
+        printf(&quot;\n\n&quot;);
+        printf(&quot;注：如果在对应的分数段内每出现一个人，就会出现两个 * 号（**）\n\n&quot;);
+        printf(&quot;按任意键回到工具箱菜单。\n&quot;);
+        char cach = _getch();
+        return;
+    &#125;
+    else &#123;
+        while (gg != NULL) &#123;
+            int jj = 0; // 学科分数的下标
+            if (strstr(gg-&gt;name, subj)) &#123;
+                printf(&quot;请输入分数区间段的个数：（请输入2-15之间的整数）\n&quot;);
+                int number;
+                scanf(&quot;%d&quot;, &amp;number);
+                if (number &lt; 2 || number &gt; 15) &#123;
+                    printf(&quot;输入错误！请重新输入。（请输入2-15之间的整数）\n&quot;);
+                    scanf(&quot;%d&quot;, &amp;number);
+                    if (number &lt; 2 || number &gt; 15) &#123;
+                        printf(&quot;你这个人真是顽固不化。\n&quot;);
+                        char cach = _getch();
+                        return;
+                    &#125;
+                &#125;
+                int* scored = (int*)malloc(sizeof(int) * (number - 1));
+                for (int i = 0; i &lt; number - 1; i++) &#123;
+                    printf(&quot;请输入第 %d 个和第 %d 个区间的分界分数：&quot;, i + 1, i + 2);
+                    scanf(&quot;%d&quot;, &amp;scored[i]);
+                &#125;
+                int* people = (int*)malloc(sizeof(int) * (number));
+                for (int r = 0; r &lt; number; r++) &#123;
+                    people[r] = 0;
+                &#125;
+                while (p != NULL) &#123;
+                    int j = 0;
+                    for (j = 0; j &lt; number; j++) &#123;
+                        if (p-&gt;stu.scores[jj] &gt;= scored[j]) &#123;
+                            people[j]++;
+                            break;
+                        &#125;
+                        if (j == number - 1 &amp;&amp; p-&gt;stu.scores[jj] &lt; scored[j]) &#123;
+                            people[number - 1]++;
+                            break;
+                        &#125;
+                    &#125;
+                    p = p-&gt;next;
+                &#125;
+                system(&quot;cls&quot;);
+                printf(&quot;\033[42m&quot;);
+                system(&quot;color 2F&quot;);
+                printf(&quot;\n*********************************************************************************\n\n&quot;);
+                printf(&quot;成绩统计图如下：\n\n&quot;);
+                for (int i = 0; i &lt; number; i++) &#123;
+                    if (i == 0) &#123;
+                        printf(&quot;满分 到 %d\t\t&quot;, scored[i]);
+                    &#125;
+                    else if (i &gt; 0 &amp;&amp; i &lt; number - 1) &#123;
+                        printf(&quot;%d 到 %d\t\t&quot;, scored[i - 1], scored[i]);
+                        if (scored[i] &lt; 10) &#123;
+                            printf(&quot;\t&quot;);
+                        &#125;
+                    &#125;
+                    else &#123;
+                        printf(&quot;%d 到 0\t\t\t&quot;, scored[i - 1]);
+                    &#125;
+                    for (int xj = 0; xj &lt; people[i]; xj++) &#123;
+                        printf(&quot;**&quot;);
+                    &#125;
+                    printf(&quot;\n&quot;);
+                &#125;
+                printf(&quot;\n\n&quot;);
+                printf(&quot;\n*********************************************************************************\n&quot;); //下面是用来计算区间成绩所占百分比的语句
+                int peoplesum = 0;
+                double* percent = (double*)malloc(sizeof(double)*number);
+                for (int dj = 0; dj &lt; number; dj++) &#123;
+                    peoplesum += people[dj];
+                &#125;
+                for (int fj = 0; fj &lt; number; fj++) &#123;
+                    percent[fj] = (people[fj] * 1.0) / peoplesum * 100;
+                    if (fj == 0) &#123;
+                        printf(&quot;满分 到 %d 分之间的同学占比：%.2lf %%\n&quot;, scored[fj], percent[fj]);
+                    &#125;
+                    else if (fj &gt; 0 &amp;&amp; fj &lt; number - 1) &#123;
+                        printf(&quot;%d 到 %d 分之间的同学占比：%.2lf %%\n&quot;, scored[fj - 1], scored[fj], percent[fj]);
+                    &#125;
+                    else &#123;
+                        printf(&quot;%d 到 0 分之间的同学占比：%.2lf %%\n\n&quot;, scored[fj - 1], percent[fj]);
+                    &#125;
+                &#125;
+                printf(&quot;注：如果在对应的分数段内每出现一个人，就会出现两个 * 号（**）\n\n&quot;);
+                printf(&quot;按任意键回到工具箱菜单。\n&quot;);
+                char cach = _getch();
+                return;
+            &#125;
+            jj++; //如果和输入学科不匹配，自动让下标加1访问后面的学科分数
+            gg = gg-&gt;next;
+        &#125;
+    &#125;
+    if (gg == NULL) &#123;
+        printf(&quot;未找到该学科！\n&quot;);
+        printf(&quot;按下任意键回到工具箱菜单。\n&quot;);
+        char cache = _getch();
+        return;
+    &#125;
+&#125;
+</code></pre>
+<p>6.删除信息的函数参考</p>
+<pre><code class="c">void DeleteStudentInform() &#123;
+    printf(&quot;该功能用于删除已经保存在磁盘中的学生信息文件。\n&quot;);
+    printf(&quot;确定要进行删除操作吗？确定请按y,否则按其他键返回。\n&quot;);
+    char get_ = _getch();
+    if (get_ != &#39;y&#39;) &#123;
+        return;
+    &#125;
+    system(&quot;cls&quot;);
+    printf(&quot;目前储存的成绩信息情况如下：\n&quot;);
+    char namae_[25] = &quot;&quot;;
+    char nfile1[] = &quot;studinfo1.txt&quot;;
+    char nfile2[] = &quot;studinfo2.txt&quot;;
+    char nfile3[] = &quot;studinfo3.txt&quot;;
+    char nfile4[] = &quot;studinfo4.txt&quot;;
+    char nfile5[] = &quot;studinfo5.txt&quot;;
+    char nfile6[] = &quot;studinfo6.txt&quot;;
+    char nfile7[] = &quot;studinfo7.txt&quot;;
+    printf(&quot;成绩信息1：&quot;);
+    FILE* file1 = fopen(&quot;studinfo1.txt&quot;, &quot;r&quot;);
+    if (file1 == NULL) &#123; //逐个打印存档信息位的数据
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file1, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息2：&quot;);
+    FILE* file2 = fopen(&quot;studinfo2.txt&quot;, &quot;r&quot;);
+    if (file2 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file2, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息3：&quot;);
+    FILE* file3 = fopen(&quot;studinfo3.txt&quot;, &quot;r&quot;);
+    if (file3 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file3, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息4：&quot;);
+    FILE* file4 = fopen(&quot;studinfo4.txt&quot;, &quot;r&quot;);
+    if (file4 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file4, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息5：&quot;);
+    FILE* file5 = fopen(&quot;studinfo5.txt&quot;, &quot;r&quot;);
+    if (file5 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file5, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息6：&quot;);
+    FILE* file6 = fopen(&quot;studinfo6.txt&quot;, &quot;r&quot;);
+    if (file6 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file6, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;成绩信息7：&quot;);
+    FILE* file7 = fopen(&quot;studinfo7.txt&quot;, &quot;r&quot;);
+    if (file7 == NULL) &#123;
+        printf(&quot;（空）&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;已保存 &quot;);
+        fscanf(file7, &quot;%s&quot;, namae_);
+        printf(&quot;%s &quot;, namae_);
+    &#125;
+    printf(&quot;\n&quot;);
+    printf(&quot;请选择需要删除的学生信息存档：\n&quot;);
+    char ggc = _getch();
+    char hhc;
+    char* nfile;
+    switch (ggc) &#123;
+    case &#39;1&#39;:
+        nfile = nfile1;
+        fclose(file1);
+        break;
+    case &#39;2&#39;:
+        nfile = nfile2;
+        fclose(file2);
+        break;
+    case &#39;3&#39;:
+        nfile = nfile3;
+        fclose(file3);
+        break;
+    case &#39;4&#39;:
+        nfile = nfile4;
+        fclose(file4);
+        break;
+    case &#39;5&#39;:
+        nfile = nfile5;
+        fclose(file5);
+        break;
+    case &#39;6&#39;:
+        nfile = nfile6;
+        fclose(file6);
+        break;
+    case &#39;7&#39;:
+        nfile = nfile7;
+        fclose(file7);
+        break;
+    default:
+        printf(&quot;没有该选项！删除失败！\n&quot;);
+        printf(&quot;按下任意键返回工具箱菜单。\n&quot;);
+        hhc = _getch();
+        return;
+    &#125;
+    printf(&quot;\n确认删除该存档吗？确认请按y,否则按其他键返回。\n&quot;);
+    char cac = _getch();
+    if (cac != &#39;y&#39;) &#123;
+        return;
+    &#125;
+    int state = remove(nfile);
+    if (state == 0) &#123;
+        printf(&quot;文件删除成功！\n&quot;);
+    &#125;
+    else &#123;
+        printf(&quot;很抱歉，文件删除失败。错误码：%d\n&quot;, state);
+    &#125;
+    printf(&quot;按下任意键返回工具箱。\n&quot;);
+    char cache = _getch();
+    return;
+&#125;
+</code></pre>
+<p>6.主要用到的头文件等</p>
+<pre><code class="c">#define _CRT_SECURE_NO_WARNINGS 1 //Visual Studio的尿性不必多说
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt; //处理字符串用的
+#include &lt;stdlib.h&gt; //内存分配要用到的
+#include &lt;windows.h&gt; //便于控制台的不同样式的输出
+#include &lt;time.h&gt; //给彩蛋用的时间统计头文件
+#include &lt;conio.h&gt; // &lt;conio.h&gt; 是点按交互需要用到的头文件
+
+#include &quot;games.h&quot; //彩蛋头文件
+
+void usleep(__int64 usec) &#123; //网上抄来的适用于windows平台的时间暂停代码
+    HANDLE timer;
+    LARGE_INTEGER interval;
+    interval.QuadPart = -10 * usec;
+    timer = CreateWaitableTimer(NULL, TRUE, NULL);
+    SetWaitableTimer(timer, &amp;interval, 0, NULL, NULL, 0);
+    WaitForSingleObject(timer, INFINITE);
+    CloseHandle(timer);
+&#125;
+</code></pre>
+<h2 id="源代码"><a href="#源代码" class="headerlink" title="源代码"></a>源代码</h2><p>已经上传到了gitee托管，后续会考虑上传到github托管。<a target="_blank" rel="noopener" href="https://gitee.com/katayo-kizuna/course-design-for-c-language/tree/master/%E5%AD%A6%E7%94%9F%E6%88%90%E7%BB%A9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%EF%BC%88%E5%8D%9A%E5%AE%A2%E7%89%88%EF%BC%89">点击查看</a></p>
+<h5 id="本程序已经基本完成。有什么建议可以在下面吐槽"><a href="#本程序已经基本完成。有什么建议可以在下面吐槽" class="headerlink" title="本程序已经基本完成。有什么建议可以在下面吐槽~"></a>本程序已经基本完成。有什么建议可以在下面吐槽~</h5><h4 id="—未完待续—"><a href="#—未完待续—" class="headerlink" title="—未完待续—"></a>—未完待续—</h4>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="visitorIP"></span>
+    <span id="visitorLocation"></span>
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 Nekobox of
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Katayo Kizuna
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        <div>
+            你是第 <font color=#49afe5><span id="busuanzi_value_site_uv"></span></font> 个进来的Neko酱૮(˶ᵔ ᵕ ᵔ˶)ა
+        </div>
+        <div>
+            <img src="https://count.himiku.com/get/@demo?theme=rule34" alt=":name" />
+        </div>
+        <div>
+            <script src="/js/visitor.js"></script>
+        </div>
+        
+        <div>
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240434">萌ICP备20240434号</a>
+            
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+                function createtime() {
+                    var grt = new Date("01/31/2024 20:01:00"); //在此处修改你的建站时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML =
+                        "这个盒子已经存在 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML =
+                        hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="../../../../js/main.js"></script>
+    <!-- 樱花特效 -->    
+    
+    
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.emotionsf.icu",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

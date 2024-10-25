@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <meta charset="utf-8" />
+    <title>我们电脑所生成的随机数，真的是随机数吗？ | Katayo&#39;s Nekobox</title>
+    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <meta name="author" content="Katayo Kizuna" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 下雪效果 -->
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
+    <!-- 红心烟花效果 -->
+    <!-- 樱花特效 -->
+    <script async src="/js/sakura.js"></script>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css" />
+<script src="../../../../js/lib/math.js"></script>
+
+
+<script src="../../../../js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请刷新(●´∀｀●) </p>
+                    <img src="../../../../images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KATAYO&#39;S NEKOBOX</span>
+        </a>
+        
+        <a href="../../../../index.html">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About Me</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KATAYO&#39;S NEKOBOX</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="../../../../index.html">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>我们电脑所生成的随机数，真的是随机数吗？</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/3
+        </span>
+        
+        <span class="category">
+            <a href="../../../../categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                knowledge
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator-simple/" style="color: #00bcd4">算法思路</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/flask/" style="color: #03a9f4">科普</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>？ ？ ？</p>
+<span id="more"></span>
+
+<h2 id="⚠️导入"><a href="#⚠️导入" class="headerlink" title="⚠️导入"></a>⚠️导入</h2><p>很多人习惯于用随机数网站或者随机数程序来生成随机数。但是我们不知道的是，随机数并不随机。</p>
+<p>很多玩过minecraft的朋友都知道，在世界生成之前编辑即将生成的地图的时候，我们可以输入一个种子来指定所生成的生物群系，从而实现出生在人为指定的不同区域中。</p>
+<p>如果把随机数比作生成的地图，那么对于随机数来讲，<strong>它也有专属于它的种子。</strong></p>
+<h2 id="🔯代码演示"><a href="#🔯代码演示" class="headerlink" title="🔯代码演示"></a>🔯代码演示</h2><p>以下是一个能够自定义种子并根据种子生成100个随机数的C++程序代码，大家可以复制之后放在编译器上运行一下</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;cstdlib&gt;
+using namespace std;
+
+int main() &#123;
+    int i = 0;
+    int input;
+    cout &lt;&lt; &quot;请输入随机数种子&quot;;
+    cin &gt;&gt; input;
+    srand(input);
+    cout &lt;&lt; &quot;分别输入最大数和最小数&quot;;
+    int max_number, min_number;
+    cin &gt;&gt; max_number &gt;&gt; min_number;
+    for (int j = 1; j &lt;= 100; j++) &#123;
+        int random_number = (rand() % (max_number - min_number + 1)) + min_number;
+        cout &lt;&lt; random_number &lt;&lt; &#39;\t&#39;;
+        if(j%5==0)&#123; //每输出5个数换行
+            cout &lt;&lt; &#39;\n&#39;;
+        &#125;
+    &#125;
+    return 0;
+&#125;
+</code></pre>
+<p>其中使用的<code>rand()</code> 函数和<code>srand()</code>函数均为C的标准库函数，包含在<code>stdlib.h</code>内。(C++代码中可以使用<code>&lt;cstdlib&gt;</code>方法引入)<br>下面是示例输入和输出结果：</p>
+<h3 id="☯️示例一"><a href="#☯️示例一" class="headerlink" title="☯️示例一"></a>☯️示例一</h3><p><strong>输入</strong></p>
+<pre><code class="cmd">请输入随机数种子888
+分别输入最大数和最小数100 10
+</code></pre>
+<p><strong>输出</strong></p>
+<pre><code class="cmd">36      82      77      18      91
+37      64      71      67      70
+43      50      46      78      32
+93      86      72      30      77
+64      34      56      20      43
+56      57      21      82      54
+74      69      54      29      100
+66      13      62      21      13
+71      59      55      68      22
+63      47      43      74      74
+86      50      65      75      49
+89      56      26      83      50
+12      96      19      92      33
+57      40      88      83      20
+28      33      50      72      30
+50      33      85      21      95
+85      64      90      32      68
+31      54      84      66      97
+88      99      31      14      24
+48      40      66      33      98
+</code></pre>
+<h3 id="☯️示例二"><a href="#☯️示例二" class="headerlink" title="☯️示例二"></a>☯️示例二</h3><p><strong>输入</strong></p>
+<pre><code class="cmd">请输入随机数种子114514
+分别输入最大数和最小数514 114
+</code></pre>
+<p><strong>输出</strong></p>
+<pre><code class="cmd">426     379     412     163     375
+187     132     310     494     150
+473     236     199     323     472
+221     495     166     334     356
+424     185     303     399     166
+173     143     497     213     204
+284     305     319     227     464
+449     293     503     360     310
+204     398     293     428     362
+188     399     237     231     164
+209     120     255     280     177
+330     258     405     219     207
+162     423     476     312     137
+506     384     497     413     322
+484     471     114     174     214
+359     494     471     386     138
+295     385     148     293     152
+377     199     154     467     334
+383     356     300     486     355
+319     139     319     462     302
+</code></pre>
+<h3 id="✝️示例三"><a href="#✝️示例三" class="headerlink" title="✝️示例三"></a>✝️示例三</h3><p><strong>输入</strong></p>
+<pre><code class="cmd">请输入随机数种子888
+分别输入最大数和最小数150 50
+</code></pre>
+<p><strong>输出</strong></p>
+<pre><code class="cmd">59      100     114     115     119
+125     65      74      145     61
+79      112     61      72      83
+125     127     96      65      111
+59      92      116     112     124
+102     109     91      65      129
+98      108     134     129     105
+113     119     107     88      117
+96      122     116     78      85
+100     74      72      142     150
+145     67      122     89      119
+114     100     103     136     102
+97      137     54      54      58
+70      148     98      81      67
+135     139     70      69      73
+116     104     83      60      93
+137     101     106     70      86
+81      149     65      70      133
+80      114     107     124     100
+85      143     52      56      142
+</code></pre>
+<p>大家可以使用自己的编译器来参照示例进行输入，再对比自己所生成的数据是不是和参照示例一致。也可以重复输入自己的数据，看看结果是否一致。<br><br></p>
+<h2 id="🔆我的一些看法"><a href="#🔆我的一些看法" class="headerlink" title="🔆我的一些看法"></a>🔆我的一些看法</h2><blockquote>
+<p><strong>以下观点均为个人主观看法，存在很多不严谨的地方，若有什么问题可以在下方评论区留言</strong></p>
+</blockquote>
+<p>既然“随机数并不随机”这一假说已经成立，那么它就为暗箱操作提供了非常大的空间。</p>
+<p>例如，我们可以先指定一个我们已知生成数据的种子来生成随机数，然后对生成的这一堆看似随机的数据各自对应的标本中加入人为干涉的痕迹（<em>俗称动手脚</em>）<br>比如缅北电诈集团的“杀猪盘”设下的赌局，被骗的人总是以为自己所获得的那个数字是随机的，亏钱了总是责怪自己运气不好，殊不知这一串“随机”的数字背后是电诈公司有规律地设置下的陷阱。然后，据此再利用被骗者的赌徒心理，诈骗巨额财产，甚至使被骗者家破人亡。<br>这种做法同样适用于很多不怀好意的人。</p>
+<p>但是我并不是说以后就不要使用那些能够生成随机数的程序或者网站了，我只是想让我们算力仍然有限的电子计算机产生的随机数能够“干净”一点，而不是让他成为坏人的工具。<br><strong>默认情况下，程序生成随机数的种子是当前的系统时间</strong>，而由于系统时间每时每刻都在不断更新并且数据是不同的，我们使用随机数程序生成的数据的规律很难被找到，一般我们并不需要担心我们生成的随机数并不“干净”的问题。</p>
+<p><strong>让随机数做它本应该做的事，这就够了</strong><br><br></p>
+<h4 id="—end—"><a href="#—end—" class="headerlink" title="—end—"></a>—end—</h4>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="visitorIP"></span>
+    <span id="visitorLocation"></span>
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 Nekobox of
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Katayo Kizuna
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        <div>
+            你是第 <font color=#49afe5><span id="busuanzi_value_site_uv"></span></font> 个进来的Neko酱૮(˶ᵔ ᵕ ᵔ˶)ა
+        </div>
+        <div>
+            <img src="https://count.himiku.com/get/@demo?theme=rule34" alt=":name" />
+        </div>
+        <div>
+            <script src="/js/visitor.js"></script>
+        </div>
+        
+        <div>
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240434">萌ICP备20240434号</a>
+            
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+                function createtime() {
+                    var grt = new Date("01/31/2024 20:01:00"); //在此处修改你的建站时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML =
+                        "这个盒子已经存在 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML =
+                        hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="../../../../js/main.js"></script>
+    <!-- 樱花特效 -->    
+    
+    
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.emotionsf.icu",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

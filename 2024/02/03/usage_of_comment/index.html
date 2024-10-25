@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <meta charset="utf-8" />
+    <title>有关本人博客评论区的一些使用教程 | Katayo&#39;s Nekobox</title>
+    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <meta name="author" content="Katayo Kizuna" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 下雪效果 -->
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
+    <!-- 红心烟花效果 -->
+    <!-- 樱花特效 -->
+    <script async src="/js/sakura.js"></script>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css" />
+<script src="../../../../js/lib/math.js"></script>
+
+
+<script src="../../../../js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请刷新(●´∀｀●) </p>
+                    <img src="../../../../images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KATAYO&#39;S NEKOBOX</span>
+        </a>
+        
+        <a href="../../../../index.html">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About Me</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KATAYO&#39;S NEKOBOX</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="../../../../index.html">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>有关本人博客评论区的一些使用教程</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/3
+        </span>
+        
+        <span class="category">
+            <a href="../../../../categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                knowledge
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/usage/" style="color: #ff7d73">使用教程</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><strong>评论前必看</strong></p>
+<span id="more"></span>
+
+<p>24.6.24更新<br>之前的评论系统waline后端炸了，所以评论系统已经紧急替换成了Twikoo，功能和使用方法和waline基本一致</p>
+<p>本文主要讲述的就是如何使用markdown语法进行评论</p>
+<h5 id="以下大部分内容源自markdown中国官网-本文只转载部分常用的评论语法。"><a href="#以下大部分内容源自markdown中国官网-本文只转载部分常用的评论语法。" class="headerlink" title="以下大部分内容源自markdown中国官网,本文只转载部分常用的评论语法。"></a>以下大部分内容源自<a target="_blank" rel="noopener" href="https://markdown.com.cn/basic-syntax">markdown中国官网</a>,本文只转载部分常用的评论语法。</h5><hr>
+<h2 id="1️-Markdown-标题和文字"><a href="#1️-Markdown-标题和文字" class="headerlink" title="1️ Markdown 标题和文字"></a>1️ Markdown 标题和文字</h2><p>请先看如下文字演示：</p>
+<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><br>
+
+
+<p><strong>这个是粗体</strong></p>
+<p><em>这个是斜体</em></p>
+<p><em><strong>这个是粗体加斜体</strong></em></p>
+<p>~这里想用删除线~~</p>
+<p>上文对应的输入方式如下：</p>
+<pre><code># 一级标题
+
+## 二级标题
+
+### 三级标题
+
+
+**这个是粗体**
+
+*这个是斜体*
+
+***这个是粗体加斜体***
+
+~这里想用删除线~~
+</code></pre>
+<p>也就是说，文字前的#号多少用于调节标题大小；文字前面加*号可以用来改变文字形态。</p>
+<h2 id="2️-代码块"><a href="#2️-代码块" class="headerlink" title="2️ 代码块"></a>2️ 代码块</h2><p>如果在一个行内需要引用代码，只要用反引号（&#96;）引起来就好，如下：</p>
+<p>Use the <code>printf()</code> function.</p>
+<p>上述文本输入时如下：</p>
+<pre><code>Use the `printf()` function.
+</code></pre>
+<p>在需要高亮的代码块的前一行及后一行使用三个反引号，同时<strong>第一行反引号后面表示代码块所使用的语言</strong>，如下：</p>
+<pre><code class="java">// FileName: HelloWorld.java
+public class HelloWorld &#123;
+  // Java 入口程序，程序从此入口
+  public static void main(String[] args) &#123;
+    System.out.println(&quot;Hello,World!&quot;); // 向控制台打印一条语句
+  &#125;
+&#125;
+</code></pre>
+<p>上述文本输入时如下：</p>
+<pre><code>```java
+// FileName: HelloWorld.java
+public class HelloWorld &#123;
+  // Java 入口程序，程序从此入口
+  public static void main(String[] args) &#123;
+    System.out.println(&quot;Hello,World!&quot;); // 向控制台打印一条语句
+  &#125;
+&#125;
+```
+</code></pre>
+<p>对于我们常用的一些编程语言，比如C、C++、python、Java、kotlin、go、javascript等，都是支持高亮的。但注意，C++在显示高亮的时候需要在开头 &#96;&#96;&#96; 的后面写cpp。所有语言在高亮显示的时候都需要小写。<br>注意，由于评论系统原因，<strong>代码缩进的时候不要使用tab键</strong>（否则光标会跳转到下方的图标），推荐使用4个空格代替tab键进行缩进。</p>
+<h2 id="3️-引用块"><a href="#3️-引用块" class="headerlink" title="3️ 引用块"></a>3️ 引用块</h2><p>要创建块引用，请在段落前添加一个 &gt; 符号。<br>比如：</p>
+<blockquote>
+<p>我是引用块</p>
+</blockquote>
+<p>实现方式如下：</p>
+<pre><code>&gt; 我是引用块
+</code></pre>
+<p>块引用可以包含多个段落。为段落之间的空白行添加一个 &gt; 符号。</p>
+<blockquote>
+<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>
+<p>The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.</p>
+</blockquote>
+<p>实现方式如下：</p>
+<pre><code>&gt; Dorothy followed her through many of the beautiful rooms in her castle.
+&gt;
+&gt; The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
+</code></pre>
+<p>注意：在引用结束后，接下来的文字需要和上面的文字之间多出一行，否则接下来的文字全部都会被引用。</p>
+<h2 id="4️-换行"><a href="#4️-换行" class="headerlink" title="4️ 换行"></a>4️ 换行</h2><p>在一行的末尾添加两个或多个空格，然后按回车键,即可创建一个换行(<code>&lt;br&gt;</code>)<br>也可以在一句话的结尾加上<code>&lt;br&gt;</code>，来达到换行的效果。<br>用空格键或者tab键缩进段落是没有用的。<br>如果不愿在句子后面打两个空格，那就直接按回车吧，也是可以换行的。</p>
+<p>示例：</p>
+<p>  只因你太美。<br>我不曾忘记。</p>
+<p>其中“只因你太美后面我加了一个tab，如上文所示，没有起到效果。<br>上文采用如下方式输入：</p>
+<pre><code>  只因你太美。 //加了tab
+我不曾忘记
+</code></pre>
+<p>如果要换行多次，就换n次行加n-1个<code>&lt;br&gt;</code>就可以了。例如：</p>
+<p>只因你太美。<br><br><br>我不曾忘记。</p>
+<p>上方我换了两次行，输入方式如下：</p>
+<pre><code>只因你太美。
+&lt;br&gt;
+我不曾忘记。
+</code></pre>
+<h2 id="懒得写了…其它的去官网查看吧zzz反正上面的也够用了"><a href="#懒得写了…其它的去官网查看吧zzz反正上面的也够用了" class="headerlink" title="懒得写了…其它的去官网查看吧zzz反正上面的也够用了"></a>懒得写了…其它的去官网查看吧zzz反正上面的也够用了</h2>
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="visitorIP"></span>
+    <span id="visitorLocation"></span>
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 Nekobox of
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Katayo Kizuna
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        <div>
+            你是第 <font color=#49afe5><span id="busuanzi_value_site_uv"></span></font> 个进来的Neko酱૮(˶ᵔ ᵕ ᵔ˶)ა
+        </div>
+        <div>
+            <img src="https://count.himiku.com/get/@demo?theme=rule34" alt=":name" />
+        </div>
+        <div>
+            <script src="/js/visitor.js"></script>
+        </div>
+        
+        <div>
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240434">萌ICP备20240434号</a>
+            
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+                function createtime() {
+                    var grt = new Date("01/31/2024 20:01:00"); //在此处修改你的建站时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML =
+                        "这个盒子已经存在 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML =
+                        hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="../../../../js/main.js"></script>
+    <!-- 樱花特效 -->    
+    
+    
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.emotionsf.icu",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

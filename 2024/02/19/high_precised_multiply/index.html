@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <meta charset="utf-8" />
+    <title>蓝桥杯——高精度平方差 | Katayo&#39;s Nekobox</title>
+    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <meta name="author" content="Katayo Kizuna" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 下雪效果 -->
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
+    <!-- 红心烟花效果 -->
+    <!-- 樱花特效 -->
+    <script async src="/js/sakura.js"></script>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css" />
+<script src="../../../../js/lib/math.js"></script>
+
+
+<script src="../../../../js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请刷新(●´∀｀●) </p>
+                    <img src="../../../../images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KATAYO&#39;S NEKOBOX</span>
+        </a>
+        
+        <a href="../../../../index.html">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About Me</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KATAYO&#39;S NEKOBOX</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="../../../../index.html">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>蓝桥杯——高精度平方差</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/19
+        </span>
+        
+        <span class="category">
+            <a href="../../../../categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                knowledge
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #00bcd4">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/Python/" style="color: #ffa2c4">Python</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator/" style="color: #03a9f4">算法题</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/trophy/" style="color: #00bcd4">蓝桥杯</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h4 id="Python-秒-默-全"><a href="#Python-秒-默-全" class="headerlink" title="Python 秒 默 全"></a>Python 秒 默 全</h4><span id="more"></span>
+
+<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>很多人喜欢用计算机来计算特别大的数据，比如使用科学计数法之后右上角需要写的指数是几百上千的那种。但是，计算机的数据类型限制了我们计算的最大数字大小。<br>即使是最大的long long数据类型，最大也只有9223372036854775807，即2的63次方减1<br>这对于野心家来说肯定远远不够，所以我们就需要更加精确的能够计算成百上千位数据的算法。</p>
+<p>先奉上用C++写的高精度算法代码：</p>
+<pre><code class="cpp">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+typedef long long ll;
+
+bool cmp(vector&lt;int&gt; &amp;a, vector&lt;int&gt; &amp;b) &#123; //这个函数用于比较数组大小
+    if (a.size() != b.size())
+        return a.size() &gt; b.size();
+    for (int i = a.size() - 1; i &gt;= 0; i--) &#123; //长度相等时，从前到后逐个比较元素大小
+        if (a[i] != b[i])
+            return a[i] &gt; b[i];
+    &#125;
+    return true;
+&#125;
+
+// 大整数相乘
+vector&lt;int&gt; multiply(vector&lt;int&gt; &amp;A, vector&lt;int&gt; &amp;B) &#123;
+    vector&lt;int&gt; C(A.size() + B.size());
+    for (int i = 0; i &lt; A.size(); i++) &#123;
+        for (int j = 0; j &lt; B.size(); j++) &#123;
+            C[i + j] += A[i] * B[j]; //先相乘
+        &#125;
+    &#125;
+    for (int i = 0, t = 0; i &lt; C.size(); i++) &#123;
+        t += C[i];
+        C[i] = t % 10;
+        t /= 10; //后进位
+    &#125;
+    while (C.size() &gt; 1 &amp;&amp; C.back() == 0)
+        C.pop_back(); //去除前导0，便于之后结果的逆序输出
+    return C;
+&#125;
+
+// 大整数相减
+vector&lt;int&gt; subtract(vector&lt;int&gt; &amp;a, vector&lt;int&gt; &amp;b) &#123;
+    int al = a.size(), bl = b.size();
+    vector&lt;int&gt; c(max(al, bl), 0); // 结果数组
+    for (int i = 0; i &lt; max(al, bl); i++) &#123;
+        if (i &lt; al) &#123;
+            a[i] -= (i &lt; bl ? b[i] : 0);
+        &#125;
+        if (a[i] &lt; 0) &#123;
+            a[i + 1]--;
+            a[i] += 10;
+        &#125;
+        c[i] = a[i];
+    &#125;
+    while (!c.empty() &amp;&amp; c.back() == 0) &#123;
+        c.pop_back(); // 去除前导零
+    &#125;
+    return c;
+&#125;
+
+int main() &#123;
+    string str1, str2, st1, st2;
+    cin &gt;&gt; str1 &gt;&gt; str2;
+    vector&lt;int&gt; A, B;
+    if (str1[0] == &#39;-&#39;) &#123; //判断是否为负数
+        for (int i = 1; i &lt; str1.size(); i++) &#123;
+            st1 += str1[i];
+        &#125;
+    &#125; else &#123;
+        st1 = str1;
+    &#125;
+    if (str2[0] == &#39;-&#39;) &#123;
+        for (int i = 1; i &lt; str2.size(); i++) &#123;
+            st2 += str2[i];
+        &#125;
+    &#125; else &#123;
+        st2 = str2;
+    &#125;
+    for (int i = st1.size() - 1; i &gt;= 0; i--) &#123;
+        A.push_back(st1[i] - &#39;0&#39;);
+    &#125;
+    for (int i = st2.size() - 1; i &gt;= 0; i--) &#123;
+        B.push_back(st2[i] - &#39;0&#39;);
+    &#125;
+    vector&lt;int&gt; sg1 = multiply(A, A);
+    vector&lt;int&gt; sg2 = multiply(B, B);
+    vector&lt;int&gt; output;
+    if (cmp(sg1, sg2))
+        output = subtract(sg1, sg2);
+    else &#123;
+        cout &lt;&lt; &#39;-&#39;;
+        output = subtract(sg2, sg1);
+    &#125;
+    for (int i = output.size() - 1; i &gt;= 0; i--) &#123;
+        cout &lt;&lt; output[i];
+    &#125;
+    cout &lt;&lt; endl;
+    return 0;
+&#125;
+</code></pre>
+<p>上面是我写的竞赛代码，花了我将近5个小时才解决精度不够的问题（即使并非我完全原创）<br>大致思路就是采用小学的模拟列竖式的方法进行运算，每一位的结果单独储存到数组或者字符串的一个元素里面，然后进行求和并进位。<br>之前还尝试过使用平方差公式 $a^2-b^2 &#x3D; (a+b)(a-b)$<br>来进行计算，但是我发现这种方法处理结果的正负比较麻烦（容易出错），遂放弃。<br>具体的计算原理可以参考下列视频：（来源：bilibili）</p>
+
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
+<iframe src="//player.bilibili.com/player.html?aid=241083653&bvid=BV1Ne411v78Z&cid=1401768891&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;" ></iframe></div>
+
+
+<p>这玩意写着写着脑子都要炸了。但是</p>
+<h3 id="现在，是见证奇迹的时刻"><a href="#现在，是见证奇迹的时刻" class="headerlink" title="现在，是见证奇迹的时刻"></a>现在，是见证奇迹的时刻</h3><p>(下列是其它选手写的代码)</p>
+<pre><code class="python">import os
+import sys
+print(int(input())**2-int(input())**2)
+</code></pre>
+<pre><code class="java">import java.math.BigInteger;
+import java.util.Scanner;
+public class Main &#123;
+    public static void main(String[] args) &#123;
+        Scanner scanner=new Scanner(System.in);
+        BigInteger A=new BigInteger(scanner.next());
+        BigInteger B=new BigInteger(scanner.next());
+        A=A.multiply(A);
+        B=B.multiply(B);
+        System.out.println(A.subtract(B));
+    &#125;	
+&#125;
+</code></pre>
+<p>没错，python只是用了最基础的原生库就搞定了高精度算法，而java也有对应的针对大数运算的标准库。<br>C++选手骂骂咧咧的退出了比赛。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="visitorIP"></span>
+    <span id="visitorLocation"></span>
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 Nekobox of
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Katayo Kizuna
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        <div>
+            你是第 <font color=#49afe5><span id="busuanzi_value_site_uv"></span></font> 个进来的Neko酱૮(˶ᵔ ᵕ ᵔ˶)ა
+        </div>
+        <div>
+            <img src="https://count.himiku.com/get/@demo?theme=rule34" alt=":name" />
+        </div>
+        <div>
+            <script src="/js/visitor.js"></script>
+        </div>
+        
+        <div>
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240434">萌ICP备20240434号</a>
+            
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+                function createtime() {
+                    var grt = new Date("01/31/2024 20:01:00"); //在此处修改你的建站时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML =
+                        "这个盒子已经存在 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML =
+                        hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="../../../../js/main.js"></script>
+    <!-- 樱花特效 -->    
+    
+    
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.emotionsf.icu",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

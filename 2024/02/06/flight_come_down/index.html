@@ -1,0 +1,437 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <meta charset="utf-8" />
+    <title>蓝桥杯-飞机降落问题解法 | Katayo&#39;s Nekobox</title>
+    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <meta name="author" content="Katayo Kizuna" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 下雪效果 -->
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
+    <!-- 红心烟花效果 -->
+    <!-- 樱花特效 -->
+    <script async src="/js/sakura.js"></script>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css" />
+<script src="../../../../js/lib/math.js"></script>
+
+
+<script src="../../../../js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请刷新(●´∀｀●) </p>
+                    <img src="../../../../images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KATAYO&#39;S NEKOBOX</span>
+        </a>
+        
+        <a href="../../../../index.html">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About Me</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KATAYO&#39;S NEKOBOX</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="../../../../index.html">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>蓝桥杯-飞机降落问题解法</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/2/6
+        </span>
+        
+        <span class="category">
+            <a href="../../../../categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                knowledge
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #03a9f4">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator/" style="color: #ffa2c4">算法题</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/trophy/" style="color: #03a9f4">蓝桥杯</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>蓝桥杯2023年大学B组真题—飞机降落解法</p>
+<span id="more"></span>
+
+<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>说实在的我这个人并不是非常精通深搜广搜的知识，但是我在之前c语言课上打印杨辉三角的时候就用到了搜索解题的基础———递归调用。<br>由于C++具有【动态数组】vector容器，能够根据元素数量自动调整大小，我们可以利用这一特性，对数量未知的数据进行处理。<br>而且vector支持用函数直接对其进行修改，而不像其它数据一样只能传入指针或者作为副本传入。（虽然其它的数据也能传指针然后修改它，但这样相比vector这个还是麻烦了些）</p>
+<h4 id="强烈建议要打蓝桥杯的学C-！因为真的太好用了ㄟ-≧◇≦-ㄏ"><a href="#强烈建议要打蓝桥杯的学C-！因为真的太好用了ㄟ-≧◇≦-ㄏ" class="headerlink" title="强烈建议要打蓝桥杯的学C++！因为真的太好用了ㄟ(≧◇≦)ㄏ"></a><font color=#871A99>强烈建议要打蓝桥杯的学C++！因为真的太好用了ㄟ(≧◇≦)ㄏ</font></h4><h2 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路"></a>解题思路</h2><p><strong>DFS</strong><br>如果当前遍历的飞机编号 cnt 等于飞机数量 n，表示所有飞机都已经安全降落，返回 true。 遍历每一架飞机，如果当前飞机未被使用（false）：</p>
+<ol>
+<li>设置当前飞机状态为已使用（down[i] &#x3D; true）。</li>
+<li>判断是否在规定时间内开始降落，如果不是，则回溯并返回 false。</li>
+<li>递归调用 dfs 处理下一架飞机，如果返回 true，表示可以成功安排降落，直接返回 true。</li>
+<li>回溯，如果遍历完所有飞机都未找到合适的安排，返回 false。</li>
+</ol>
+<pre><code class="c++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+struct airplane &#123;
+    int T;
+    int D;
+    int L;
+&#125;;
+
+bool dfs(int total, int cnt, int last, vector&lt;airplane&gt; &amp;plane, vector&lt;bool&gt; &amp;down) &#123;
+    if (total == cnt) &#123;
+        return true;
+    &#125;
+    for (int i = 0; i &lt; total; i++) &#123;
+        if (down[i] == false &amp;&amp; plane[i].T + plane[i].D &gt;= last) &#123;
+            down[i] = true;
+      if (dfs(total, cnt + 1, max(last, plane[i].T) + plane[i].L, plane, down)) &#123;
+                return true;
+            &#125;
+            down[i] = false;
+        &#125;
+    &#125;
+    return false;
+&#125;
+
+int main() &#123;
+    int Total;
+    cin &gt;&gt; Total;
+    while (Total--) &#123;
+        int N;
+        cin &gt;&gt; N;
+        vector&lt;airplane&gt; plane(N);
+        vector&lt;bool&gt; down(N, false); 
+        for (int i = 0; i &lt; N; i++) &#123;
+            cin &gt;&gt; plane[i].T &gt;&gt; plane[i].D &gt;&gt; plane[i].L;
+        &#125;
+        if (dfs(N, 0, 0, plane, down)) &#123;
+            cout &lt;&lt; &quot;YES&quot; &lt;&lt; endl;
+        &#125; else &#123;
+            cout &lt;&lt; &quot;NO&quot; &lt;&lt; endl;
+        &#125;
+    &#125;
+
+    return 0;
+&#125;
+</code></pre>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>蓝桥杯比赛的程序运行时间是有限制的，如果程序运行超过了规定的时间后仍然没有输出正确结果，就会被判定为超时，和“答案错误”是一样的。这道题限定的时间是两秒钟，虽然比较充裕，但我第一次做的时候还是超时了（雾</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="visitorIP"></span>
+    <span id="visitorLocation"></span>
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 Nekobox of
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Katayo Kizuna
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        <div>
+            你是第 <font color=#49afe5><span id="busuanzi_value_site_uv"></span></font> 个进来的Neko酱૮(˶ᵔ ᵕ ᵔ˶)ა
+        </div>
+        <div>
+            <img src="https://count.himiku.com/get/@demo?theme=rule34" alt=":name" />
+        </div>
+        <div>
+            <script src="/js/visitor.js"></script>
+        </div>
+        
+        <div>
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240434">萌ICP备20240434号</a>
+            
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+                function createtime() {
+                    var grt = new Date("01/31/2024 20:01:00"); //在此处修改你的建站时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML =
+                        "这个盒子已经存在 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML =
+                        hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="../../../../js/main.js"></script>
+    <!-- 樱花特效 -->    
+    
+    
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.emotionsf.icu",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

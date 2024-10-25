@@ -1,0 +1,806 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <script>
+        if (localStorage.getItem('theme') === "dark" ||
+          (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+        ) {
+            document.documentElement.classList.add("dark");
+        }
+    </script>
+    <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
+    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
+    <script src="/js/fireworks.min.js"></script>
+    <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
+    <script src="/js/background.min.js"></script>
+    <meta charset="utf-8" />
+    <title>电子科技协会第二次授课教案 | Katayo&#39;s Nekobox</title>
+    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <meta name="author" content="Katayo Kizuna" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <!-- 下雪效果 -->
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
+    <!-- 红心烟花效果 -->
+    <!-- 樱花特效 -->
+    <script async src="/js/sakura.js"></script>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="preconnect" href="https://cdn.staticfile.org" />
+<script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.2/css/all.min.css" />
+<link rel="preconnect" href="https://fonts.loli.net" />
+<link rel="preconnect" href="https://gstatic.loli.net" crossorigin />
+<link rel="stylesheet" href="https://fonts.loli.net/css2?family=Fira+Code:wght@400;500;600;700&family=Lexend:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.9.0/styles/github.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<link 
+    rel="stylesheet"
+    id="highlight-style-dark"
+    disabled
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github-dark.min.css"
+/>
+<script src="../../../../js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.9/katex.min.css" />
+<script src="../../../../js/lib/math.js"></script>
+
+
+<script src="../../../../js/lib/preview.js"></script>
+
+
+
+
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/twikoo/1.6.31/twikoo.all.min.js"></script>
+
+
+
+<link rel="stylesheet" href="../../../../css/main.css" />
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+<body>
+    <div id="layout">
+        <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请刷新(●´∀｀●) </p>
+                    <img src="../../../../images/loading.gif" />
+                </div>
+            </div>
+        </transition>
+        <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>KATAYO&#39;S NEKOBOX</span>
+        </a>
+        
+        <a href="../../../../index.html">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About Me</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+        <a href="../../../../tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        <i class="fa-solid fa-fw theme-switcher"
+            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"
+            @click="handleThemeSwitch"></i>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;KATAYO&#39;S NEKOBOX</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="../../../../index.html">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About Me</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="../../../../tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+                <div class="item" @click="handleThemeSwitch">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-fw theme-switcher"
+                            :class="theme=='auto'?'fa-circle-half-stroke':theme=='dark'?'fa-moon':'fa-sun'"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">
+                        Theme: {{ theme=='auto'?'Auto':theme=='dark'?'Dark':'Light' }}
+                    </div>
+                </div>
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+        <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+            <div class="article">
+    <div>
+        <h1>电子科技协会第二次授课教案</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2024/10/25
+        </span>
+        
+        <span class="category">
+            <a href="../../../../categories/book/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                knowledge
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/c/" style="color: #ff7d73">C/C++</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/Python/" style="color: #ffa2c4">Python</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%8D%8F%E4%BC%9A%E6%8E%88%E8%AF%BE/" style="color: #ff7d73">电子科技协会授课</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="../../../../tags/calculator/" style="color: #03a9f4">算法题</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>玄不救非，氪不改命，唯有实践，方出真知</p>
+<span id="more"></span>
+
+<h2 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h2><p>某一天你启动元神，发现你需要完成四个委托才能获得60原石，这四个委托的名字和完成时间分别是：</p>
+<blockquote>
+<p>——奇怪的丘丘人  5分钟<br>——会飞的史莱姆  3分钟<br>——至冬国的商人  8分钟<br>——蒙德快递小哥  5分钟</p>
+</blockquote>
+<p>请问，需要多长的时间才能完成这四个委托？<br>完成这些委托的顺序有几种？</p>
+<br>
+
+<p>然而现实情况是，我们不可能完全按照前面一页的时间来完成这些元神委托。<br>因为在打委托的过程中，因为不同的委托之间的距离不同，<br>从一个委托完成到开始进行另一个委托所需要的时间也会不一样。</p>
+<p>这个时候我们或许可以引入另外一种属性，就是往来两个委托所需的时间T_D，与完成委托所需要的时间T一起进行计算。<br>假设不同委托之间切换所需时间如下，每个委托之间的往来时间一致：</p>
+<table>
+<thead>
+<tr>
+<th>下面为后者，右面为前者</th>
+<th>奇怪的丘丘人</th>
+<th>会飞的史莱姆</th>
+<th>至冬国的商人</th>
+<th>蒙德快递小哥</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>奇怪的丘丘人</td>
+<td>\</td>
+<td>3</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>会飞的史莱姆</td>
+<td>3</td>
+<td>\</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td>至冬国的商人</td>
+<td>5</td>
+<td>5</td>
+<td>\</td>
+<td>3</td>
+</tr>
+<tr>
+<td>蒙德快递小哥</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+<td>\</td>
+</tr>
+</tbody></table>
+<p>这个时候上一页你们采用的方法是不是计算量大大增加了？</p>
+<p>这里有一个参考的算法（暴力穷举法）来实现的解法：</p>
+<pre><code class="c">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+#define NUM_TASKS 4
+
+// 委托名称
+char *tasks[] = &#123;&quot;奇怪的丘丘人&quot;, &quot;会飞的史莱姆&quot;, &quot;至冬国的商人&quot;, &quot;蒙德快递小哥&quot;&#125;;
+
+// 完成时间
+int completion_times[] = &#123;5, 3, 8, 5&#125;;
+
+// 切换时间表 (对角线不使用，因此初始化为0)
+int transition_times[NUM_TASKS][NUM_TASKS] = &#123;
+    &#123;0, 3, 5, 4&#125;, // 奇怪的丘丘人
+    &#123;3, 0, 5, 5&#125;, // 会飞的史莱姆
+    &#123;5, 5, 0, 3&#125;, // 至冬国的商人
+    &#123;4, 5, 3, 0&#125;  // 蒙德快递小哥
+&#125;;
+
+// 交换函数，用于生成全排列
+void swap(int *a, int *b) &#123;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+&#125;
+
+/* 思考题：为什么交换函数的参数要加上指针呢？*/
+
+// 计算总时间
+int calculate_total_time(int path[]) &#123;
+    int total_time = 0;
+    for (int i = 0; i &lt; NUM_TASKS - 1; i++) &#123; //用来完成四个委托的循环
+        total_time += completion_times[path[i]];  // 委托完成时间
+        total_time += transition_times[path[i]][path[i + 1]]; // 切换时间
+    &#125;
+    total_time += completion_times[path[NUM_TASKS - 1]]; // 最后一个委托的完成时间
+    return total_time;
+&#125;
+
+// 全排列递归函数
+void find_shortest_path(int path[], int start, int *shortest_time, int best_path[]) &#123;
+    if (start == NUM_TASKS - 1) &#123;
+        int current_time = calculate_total_time(path);
+        if (current_time &lt; *shortest_time) &#123;
+            *shortest_time = current_time;
+            // 手动复制路径
+            for (int i = 0; i &lt; NUM_TASKS; i++) &#123;
+                best_path[i] = path[i];
+            &#125;
+        &#125;
+        return;
+    &#125;
+
+    for (int i = start; i &lt; NUM_TASKS; i++) &#123;
+        swap(&amp;path[start], &amp;path[i]);
+        find_shortest_path(path, start + 1, shortest_time, best_path);
+        swap(&amp;path[start], &amp;path[i]);
+    &#125;
+&#125;
+
+int main() &#123;
+    int path[NUM_TASKS] = &#123;0, 1, 2, 3&#125;;  // 初始路径
+    int best_path[NUM_TASKS];
+    int shortest_time = 9999;
+
+    // 找到最短路径
+    find_shortest_path(path, 0, &amp;shortest_time, best_path);
+
+    // 输出结果
+    printf(&quot;最短路径: &quot;);
+    for (int i = 0; i &lt; NUM_TASKS; i++) &#123;
+        printf(&quot;%s &quot;, tasks[best_path[i]]);
+    &#125;
+    printf(&quot;\n总时间: %d 分钟\n&quot;, shortest_time);
+
+    return 0;
+&#125;
+</code></pre>
+<h2 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h2><p><strong>“我启动我自己”</strong></p>
+<p>递归函数的意思就是，函数不停地调用自身直到符合函数不再继续调用的条件满足以后将最后一次调用的函数的值不断地向上一级函数返回，最终会返回第一次调用这个函数时候的返回值<br>很多算法就是以这种函数调用模式为核心的，比如深度搜索（DFS）、广度搜索（BFS）、动态规划等</p>
+<p>下面是一个深度搜索的示例：<br>假设我们有一个无向图，如下所示：</p>
+<pre><code class="mathematica">
+    A
+   / \
+  B   C
+ / \   \
+D   E   F
+</code></pre>
+<p>图的邻接表表示如下：</p>
+<pre><code class="python">graph = &#123;
+    &#39;A&#39;: [&#39;B&#39;, &#39;C&#39;],
+    &#39;B&#39;: [&#39;A&#39;, &#39;D&#39;, &#39;E&#39;],
+    &#39;C&#39;: [&#39;A&#39;, &#39;F&#39;],
+    &#39;D&#39;: [&#39;B&#39;],
+    &#39;E&#39;: [&#39;B&#39;],
+    &#39;F&#39;: [&#39;C&#39;]
+&#125;
+</code></pre>
+<p>用C语言深度优先搜索的实现如下：</p>
+<pre><code class="c">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX_VERTICES 6
+
+typedef struct Node &#123;
+    int vertex;
+    struct Node* next;
+&#125; Node;
+
+typedef struct Graph &#123;
+    Node* adjLists[MAX_VERTICES];
+    int visited[MAX_VERTICES];
+&#125; Graph;
+
+// 创建图
+Graph* createGraph() &#123;
+    Graph* graph = malloc(sizeof(Graph));
+    for (int i = 0; i &lt; MAX_VERTICES; i++) &#123;
+        graph-&gt;adjLists[i] = NULL;
+        graph-&gt;visited[i] = 0; // 初始化未访问
+    &#125;
+    return graph;
+&#125;
+
+// 添加边
+void addEdge(Graph* graph, int src, int dest) &#123;
+    Node* newNode = malloc(sizeof(Node));
+    newNode-&gt;vertex = dest;
+    newNode-&gt;next = graph-&gt;adjLists[src];
+    graph-&gt;adjLists[src] = newNode;
+
+    // 无向图，添加反向边
+    newNode = malloc(sizeof(Node));
+    newNode-&gt;vertex = src;
+    newNode-&gt;next = graph-&gt;adjLists[dest];
+    graph-&gt;adjLists[dest] = newNode;
+&#125;
+
+// 深度优先搜索
+void dfs(Graph* graph, int vertex) &#123;
+    graph-&gt;visited[vertex] = 1; // 标记为已访问
+    printf(&quot;%d &quot;, vertex); // 处理当前节点
+
+    Node* adjList = graph-&gt;adjLists[vertex];
+    while (adjList != NULL) &#123;
+        int connectedVertex = adjList-&gt;vertex;
+        if (!graph-&gt;visited[connectedVertex]) &#123;
+            dfs(graph, connectedVertex);
+        &#125;
+        adjList = adjList-&gt;next;
+    &#125;
+&#125;
+
+int main() &#123;
+    Graph* graph = createGraph();
+
+    // 添加边，假设 A=0, B=1, C=2, D=3, E=4, F=5
+    addEdge(graph, 0, 1); // A-B
+    addEdge(graph, 0, 2); // A-C
+    addEdge(graph, 1, 3); // B-D
+    addEdge(graph, 1, 4); // B-E
+    addEdge(graph, 2, 5); // C-F
+
+    printf(&quot;Depth First Search starting from vertex A (0):\n&quot;);
+    dfs(graph, 0);
+
+    // 释放内存（这里省略了内存释放的部分，实际使用中应当添加）
+
+    return 0;
+&#125;
+</code></pre>
+<p>如果上面的理解不了，这里有我自己编写的一个利用递归算法实现的从一数到十的算法（不管输入多少都能输出固定值10）：</p>
+<pre><code class="c">
+#include &lt;stdio.h&gt;
+
+int CountToTen(int x) &#123;
+    int i = x;
+    if (i &lt; 10) &#123;
+        return CountToTen(i + 1);
+    &#125; else if (i &gt; 10) &#123;
+        return CountToTen(i - 1);
+    &#125; else &#123;
+        return x;
+    &#125;
+&#125;
+
+int main() &#123;
+    printf(&quot;%d\n&quot;, CountToTen(100));
+    printf(&quot;%d\n&quot;, CountToTen(1));
+    return 0;
+&#125;
+</code></pre>
+<h2 id="云元神"><a href="#云元神" class="headerlink" title="云元神"></a>云元神</h2><p>小明自元神发售的那一天起，就非常想要玩元神，但是非常遗憾的就是高考毕业之后爸妈不给他买手机电脑，只能用原有的破手机破电脑，舍友也不舍得给他玩，无奈他只能眼巴巴地看着室友提升到了很高的练度<br>直到有一天，他看到元神的云端版——云元神，终于发售了。他非常兴奋，觉得从此以后它也可以玩元神了，于是直接就下载了它。但是他不知道的是，由于云元神过于火爆，每天到他能玩元神的时间的时候，前面都有超过一百个以上的人在排队。<br>小明恼火至极，发誓从此以后和元神不共戴天，再也不玩元神了。<br>请问你知道是什么东西导致小明需要排队而玩不了元神吗？</p>
+<h2 id="结构体和链表"><a href="#结构体和链表" class="headerlink" title="结构体和链表"></a>结构体和链表</h2><p>结构体是由多个不同属性的元素组成的集合，链表是由指针连接起来的一串结构体。</p>
+<p>小明排队的时候所在的就是一种名为“队列（Queue）”的数据结构体，它的特点是：数据只能从尾部进入，从头部弹出。<br>举个例子，食堂排队。<br>与之相对的还有一种数据结构，那就是栈（Stack）。它的特点是只能从尾部进入，也只能从尾部弹出。</p>
+<p>在C语言中，如果需要实现上述的两个数据结构，就需要掌握结构体和链表的基本知识。</p>
+<p>下面是一个用结构体实现的队列的算法的示例：</p>
+<pre><code class="c">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAX 5  // 定义队列的最大容量
+
+// 定义队列结构体
+struct Queue &#123;
+    int items[MAX];
+    int front;
+    int rear;
+&#125;;
+
+// 初始化队列
+void initQueue(struct Queue* q) &#123;
+    q-&gt;front = -1;
+    q-&gt;rear = -1;
+&#125;
+
+// 检查队列是否为空
+int isEmpty(struct Queue* q) &#123;
+    if (q-&gt;front == -1) &#123;
+        return 1;
+    &#125; else &#123;
+        return 0;
+    &#125;
+&#125;
+
+// 检查队列是否已满
+int isFull(struct Queue* q) &#123;
+    if (q-&gt;rear == MAX - 1) &#123;
+        return 1;
+    &#125; else &#123;
+        return 0;
+    &#125;
+&#125;
+
+// 入队操作
+void enqueue(struct Queue* q, int value) &#123;
+    if (isFull(q)) &#123;
+        printf(&quot;队列已满，无法添加元素 %d\n&quot;, value);
+    &#125; else &#123;
+        if (q-&gt;front == -1) &#123;  // 如果队列为空，设置 front 为 0
+            q-&gt;front = 0;
+        &#125;
+        q-&gt;rear++;
+        q-&gt;items[q-&gt;rear] = value;
+        printf(&quot;元素 %d 已添加到队列\n&quot;, value);
+    &#125;
+&#125;
+
+// 出队操作
+int dequeue(struct Queue* q) &#123;
+    int item;
+    if (isEmpty(q)) &#123;
+        printf(&quot;队列为空，无法执行出队操作\n&quot;);
+        return -1;
+    &#125; else &#123;
+        item = q-&gt;items[q-&gt;front];
+        q-&gt;front++;
+        if (q-&gt;front &gt; q-&gt;rear) &#123;  // 重置队列为空状态
+            q-&gt;front = q-&gt;rear = -1;
+        &#125;
+        printf(&quot;元素 %d 已从队列移除\n&quot;, item);
+        return item;
+    &#125;
+&#125;
+
+// 打印队列
+void display(struct Queue* q) &#123;
+    if (isEmpty(q)) &#123;
+        printf(&quot;队列为空\n&quot;);
+    &#125; else &#123;
+        printf(&quot;队列: &quot;);
+        for (int i = q-&gt;front; i &lt;= q-&gt;rear; i++) &#123;
+            printf(&quot;%d &quot;, q-&gt;items[i]);
+        &#125;
+        printf(&quot;\n&quot;);
+    &#125;
+&#125;
+
+int main() &#123;
+    struct Queue q;
+    initQueue(&amp;q);
+
+    enqueue(&amp;q, 10);
+    enqueue(&amp;q, 20);
+    enqueue(&amp;q, 30);
+    display(&amp;q);  // 输出队列状态
+
+    dequeue(&amp;q);
+    display(&amp;q);  // 输出队列状态
+
+    return 0;
+&#125;
+</code></pre>
+<h2 id="拉清单"><a href="#拉清单" class="headerlink" title="拉清单"></a>拉清单</h2><p>由于小明的舍友玩元神玩上瘾了，准备问小明借钱充值648。小明非常难受，但是出于面子又不得不把钱借给他们充值元神。然而，过了半年，这几个室友仍然没有还钱。<br>直到有一天，老师布置了一个设计C语言程序的任务，要求小明设计程序输出一个可以打开的文档。小明非常高兴，决定把借钱的人做成一个列表，并输出给全班同学看，以此来逼迫舍友还钱。</p>
+<blockquote>
+<p>以下同学为了充值元神欠我648元人民币，名单如下：</p>
+<blockquote>
+<p>张三<br>李四<br>王五<br>老六</p>
+</blockquote>
+</blockquote>
+<br>
+
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><p>如果一个程序只能在它自身的范围内进行操作而不能够输出任何数据，那这个程序又有什么意义呢？这个程序是用来自娱自乐的吗？<br>文件类型的输出依靠一种特殊类型的指针——FILE类型。这种类型的指针允许我们将其指向一个文件（目前我们只需要知道文本类型即可）。通过这种类型的指针我们可以对文件进行增加内容、删除、新建等操作。</p>
+<p>常见对文件内容操作的函数有：</p>
+<p><code>FILE *fopen(const char *filename, const char *mode);</code></p>
+<p>用于打开文件。mode 指定打开方式，如 “r”（读）、”w”（写）、”a”（追加）、”rb”（以二进制读方式打开）、”wb”（以二进制写方式打开）等。</p>
+<p><code>int fclose(FILE *stream);</code></p>
+<p>用于关闭文件，释放资源。</p>
+<p><code>size_t fread(void *ptr, size_t size, size_t count, FILE *stream);</code></p>
+<p>从文件中读取二进制数据到内存。ptr 指向读取内容的缓冲区，size 是每个数据项的字节数，count 是读取项数，stream 是文件指针。</p>
+<p><code>size_t fwrite(const void *ptr, size_t size, size_t count, FILE *stream);</code></p>
+<p>把内存中的二进制数据写入文件。</p>
+<p><code>int fprintf(FILE *stream, const char *format, ...);</code></p>
+<p>以格式化字符串的方式写入数据到文件。</p>
+<p><code>int fscanf(FILE *stream, const char *format, ...);</code></p>
+<p>从文件读取格式化数据。</p>
+<p><code>int fputc(int char, FILE *stream);</code></p>
+<p>将一个字符写入文件。</p>
+<p><code>int fgetc(FILE *stream);</code></p>
+<p>从文件中读取一个字符。</p>
+<p><code>int fputs(const char *str, FILE *stream);</code></p>
+<p>将字符串写入文件。</p>
+<p><code>char *fgets(char *str, int n, FILE *stream);</code></p>
+<p>从文件读取一行字符串。</p>
+<p>下面是一个示例的程序（用来输出小明拉的清单）：</p>
+<pre><code class="c">
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main() &#123;
+    FILE *file;
+    char *filename = &quot;Xiaoming&#39;s_List.txt&quot;;
+
+    // 1. 创建并打开文件 (写模式)
+    file = fopen(filename, &quot;w&quot;);
+    if (file == NULL) &#123;
+        printf(&quot;创建文件失败。\n&quot;);
+        return 1;
+    &#125;
+
+    // 2. 向文件写入内容
+    fprintf(file, &quot;以下同学为了充值元神欠我648元人民币，名单如下：\n&quot;);
+    fprintf(file, &quot;张三\n&quot;);
+    fprintf(file, &quot;李四\n&quot;);
+    fprintf(file, &quot;王五\n&quot;);
+    fprintf(file, &quot;老六\n&quot;);
+    fclose(file);  // 写入完成后关闭文件
+
+    // 3. 重新打开文件 (读模式)
+    file = fopen(filename, &quot;r&quot;);
+    if (file == NULL) &#123;
+        printf(&quot;无法打开文件。\n&quot;);
+        return 1;
+    &#125;
+
+    // 4. 读取文件内容并打印到控制台
+    char line[256];
+    while (fgets(line, sizeof(line), file)) &#123;
+        printf(&quot;%s&quot;, line);
+    &#125;
+
+    // 5. 关闭文件
+    fclose(file);
+
+    return 0;
+&#125;
+</code></pre>
+<h2 id="（选做）课后作业"><a href="#（选做）课后作业" class="headerlink" title="（选做）课后作业"></a>（选做）课后作业</h2><p>小明的命运太悲惨了，让我们完成它在元神里抽卡的心愿吧。<br>大家可以用C语言做一个抽卡模拟器，要求将抽卡结果输出到一个文本文档中。<br>提示：可以引入 <code>srand()</code> 函数来决定随机数种子（使用前引入库函数 <code>&lt;stdlib.h&gt;</code>），引入库函数 <code>&lt;time.h&gt;</code> 来获取系统时间并将其作为随机数种子，然后使用 <code>rand()</code> 函数来生成一个随机数。由于默认生成的随机数在0-32767之间，所以输出的结果需要将其和100进行取余运算之后再+1，才可以输出一个1到100之间的随机数。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    <div id="comment">
+        <div id="twikoo-container"></div>
+    </div>
+    
+    
+</div>
+
+            <footer id="footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+    <span id="visitorIP"></span>
+    <span id="visitorLocation"></span>
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2024 Nekobox of
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Katayo Kizuna
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        <div>
+            你是第 <font color=#49afe5><span id="busuanzi_value_site_uv"></span></font> 个进来的Neko酱૮(˶ᵔ ᵕ ᵔ˶)ა
+        </div>
+        <div>
+            <img src="https://count.himiku.com/get/@demo?theme=rule34" alt=":name" />
+        </div>
+        <div>
+            <script src="/js/visitor.js"></script>
+        </div>
+        
+        <div>
+            
+            <a target="_blank" rel="noopener" href="https://icp.gov.moe/?keyword=20240434">萌ICP备20240434号</a>
+            
+        </div>
+        <div>
+            <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+            <script>
+                var now = new Date();
+                function createtime() {
+                    var grt = new Date("01/31/2024 20:01:00"); //在此处修改你的建站时间
+                    now.setTime(now.getTime() + 250);
+                    days = (now - grt) / 1000 / 60 / 60 / 24;
+                    dnum = Math.floor(days);
+                    hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+                    hnum = Math.floor(hours);
+                    if (String(hnum).length == 1) {
+                        hnum = "0" + hnum;
+                    }
+                    minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+                    mnum = Math.floor(minutes);
+                    if (String(mnum).length == 1) {
+                        mnum = "0" + mnum;
+                    }
+                    seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+                    snum = Math.round(seconds);
+                    if (String(snum).length == 1) {
+                        snum = "0" + snum;
+                    }
+                    document.getElementById("timeDate").innerHTML =
+                        "这个盒子已经存在 " + dnum + " 天 ";
+                    document.getElementById("times").innerHTML =
+                        hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+                }
+                setInterval("createtime()", 250);
+            </script>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+        
+        <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+        </transition>
+        
+    </div>
+    <script src="../../../../js/main.js"></script>
+    <!-- 樱花特效 -->    
+    
+    
+
+
+
+<script>
+    twikoo.init({
+        el: "#twikoo-container",
+        envId: "https://comment.emotionsf.icu",
+        region: "",
+        path: location.pathname,
+        lang: "zh-CN",
+    })
+</script>
+
+
+    
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/assets/shizuku.model.json"},"display":{"position":"right","width":180,"height":360,"hOffset":0,"vOffset":0},"mobile":{"show":false},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
