@@ -11,23 +11,22 @@
         }
     </script>
     <canvas id="fireworks" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 32767"></canvas>
-    <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js"></script>
-    <script src="/js/fireworks.min.js"></script>
+    <script src="/js/anime.js"async></script>
+    <script src="/js/fireworks.min.js"async></script>
     <canvas id="background" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1"></canvas>
-    <script src="/js/background.min.js"></script>
+    <script src="/js/background.min.js"async></script>
     <meta charset="utf-8" />
     <title>Tags: 蓝桥杯 | Katayo&#39;s Nekobox</title>
-    <script type="text/javascript" src="\js\crash_cheat.js"></script>
+    <script type="text/javascript" src="\js\crash_cheat.js"async></script>
     <meta name="author" content="Katayo Kizuna" />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <!-- 下雪效果 -->
-    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://blog-static.cnblogs.com/files/axqa/snowflakeCursor.js"></script>
     <!-- 红心烟花效果 -->
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="/js/firework.js"async></script>
     <!-- 樱花特效 -->
-    <script async src="/js/sakura.js"></script>
+    <script async src="/js/sakura.js"async></script>
     <link rel="icon" href="/images/favicon.ico" />
     <link rel="preconnect" href="https://cdn.staticfile.org" />
 <script src="https://cdn.staticfile.org/vue/3.3.7/vue.global.prod.min.js"></script>
@@ -86,7 +85,7 @@
                 <div id="loading-circle">
                     <h2>LOADING</h2>
                     <p>加载过慢请刷新(●´∀｀●) </p>
-                    <img src="../../images/loading.gif" />
+                    <img src="../../images/loading2.gif" />
                 </div>
             </div>
         </transition>
@@ -215,7 +214,7 @@
         
         
         <span>
-            <a href="../usage/" style="background: #ffa2c4">
+            <a href="../usage/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -226,7 +225,7 @@
         
         
         <span>
-            <a href="../c/" style="background: #00a596">
+            <a href="../c/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -237,7 +236,7 @@
         
         
         <span>
-            <a href="../Python/" style="background: #ff7d73">
+            <a href="../Python/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -248,7 +247,7 @@
         
         
         <span>
-            <a href="../%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%8D%8F%E4%BC%9A%E6%8E%88%E8%AF%BE/" style="background: #03a9f4">
+            <a href="../%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%8D%8F%E4%BC%9A%E6%8E%88%E8%AF%BE/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -283,7 +282,7 @@
         
         
         <span>
-            <a href="../Hello-world/" style="background: #03a9f4">
+            <a href="../Hello-world/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -294,7 +293,7 @@
         
         
         <span>
-            <a href="../calculator-simple/" style="background: #ff7d73">
+            <a href="../calculator-simple/" style="background: #ffa2c4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -305,7 +304,7 @@
         
         
         <span>
-            <a href="../flask/" style="background: #00bcd4">
+            <a href="../flask/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -316,7 +315,7 @@
         
         
         <span>
-            <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="background: #00a596">
+            <a href="../%E5%AE%9E%E7%94%A8%E5%B7%A5%E5%85%B7/" style="background: #03a9f4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -327,7 +326,7 @@
         
         
         <span>
-            <a href="../poem/" style="background: #ffa2c4">
+            <a href="../poem/" style="background: #00a596">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -338,7 +337,7 @@
         
         
         <span>
-            <a href="../book-heart/" style="background: #ff7d73">
+            <a href="../book-heart/" style="background: #00bcd4">
                 <span class="icon">
                     <i class="fa-solid fa-tags fa-fw"></i>
                 </span>
@@ -376,7 +375,7 @@
                     
                     <span class="tag">
                         
-                        <a href="../c/" style="color: #ff7d73">C/C++</a>
+                        <a href="../c/" style="color: #ffa2c4">C/C++</a>
                     </span>
                     
                     <span class="tag">
@@ -391,7 +390,7 @@
                     
                     <span class="tag">
                         
-                        <a href="" style="color: #00a596">蓝桥杯</a>
+                        <a href="" style="color: #ff7d73">蓝桥杯</a>
                     </span>
                     
                 </span>
@@ -427,17 +426,17 @@
                     
                     <span class="tag">
                         
-                        <a href="../c/" style="color: #03a9f4">C/C++</a>
+                        <a href="../c/" style="color: #ff7d73">C/C++</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="../calculator/" style="color: #00a596">算法题</a>
+                        <a href="../calculator/" style="color: #03a9f4">算法题</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="" style="color: #03a9f4">蓝桥杯</a>
+                        <a href="" style="color: #ff7d73">蓝桥杯</a>
                     </span>
                     
                 </span>
@@ -473,17 +472,17 @@
                     
                     <span class="tag">
                         
-                        <a href="../c/" style="color: #ff7d73">C/C++</a>
+                        <a href="../c/" style="color: #ffa2c4">C/C++</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="../calculator/" style="color: #03a9f4">算法题</a>
+                        <a href="../calculator/" style="color: #00bcd4">算法题</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="" style="color: #00bcd4">蓝桥杯</a>
+                        <a href="" style="color: #00a596">蓝桥杯</a>
                     </span>
                     
                 </span>
@@ -519,17 +518,17 @@
                     
                     <span class="tag">
                         
-                        <a href="../c/" style="color: #ff7d73">C/C++</a>
+                        <a href="../c/" style="color: #03a9f4">C/C++</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="../calculator/" style="color: #00a596">算法题</a>
+                        <a href="../calculator/" style="color: #00bcd4">算法题</a>
                     </span>
                     
                     <span class="tag">
                         
-                        <a href="" style="color: #ff7d73">蓝桥杯</a>
+                        <a href="" style="color: #ffa2c4">蓝桥杯</a>
                     </span>
                     
                 </span>
